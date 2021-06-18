@@ -38,7 +38,7 @@ from MusikVcg.modules.play import cb_admin_check
 from MusikVcg.modules.play import transcode
 from MusikVcg.modules.play import convert_seconds
 from MusikVcg.modules.play import time_to_seconds
-from MusikVcgc.modules.play import changeImageSize
+from MusikVcg.modules.play import changeImageSize
 from MusikVcg.config import BOT_NAME as bn
 from MusikVcg.config import DURATION_LIMIT
 from MusikVcg.config import UPDATES_CHANNEL as updateschannel
