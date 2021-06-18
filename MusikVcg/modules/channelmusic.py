@@ -32,29 +32,29 @@ from pyrogram.types import Voice
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from Python_ARQ import ARQ
 from youtube_search import YoutubeSearch
-from MusikVcg.modules.play import generate_cover
-from MusikVcg.modules.play import arq
-from MusikVcg.modules.play import cb_admin_check
-from MusikVcg.modules.play import transcode
-from MusikVcg.modules.play import convert_seconds
-from MusikVcg.modules.play import time_to_seconds
-from MusikVcg.modules.play import changeImageSize
-from MusikVcg.config import BOT_NAME as bn
-from MusikVcg.config import DURATION_LIMIT
-from MusikVcg.config import UPDATES_CHANNEL as updateschannel
-from MusikVcg.config import que
-from MusikVcg.function.admins import admins as a
-from MusikVcg.helpers.errors import DurationLimitError
-from MusikVcg.helpers.decorators import errors
-from MusikVcg.helpers.admins import get_administrators
-from MusikVcg.helpers.channelmusic import get_chat_id
-from MusikVcg.helpers.decorators import authorized_users_only
-from MusikVcg.helpers.filters import command, other_filters
-from MusikVcg.helpers.gets import get_file_name
-from MusikVcg.services.callsmusic import callsmusic, queues
-from MusikVcg.services.callsmusic.callsmusic import client as USER
-from MusikVcg.services.converter.converter import convert
-from MusikVcg.services.downloaders import youtube
+from DaisyXMusic.modules.play import generate_cover
+from DaisyXMusic.modules.play import arq
+from DaisyXMusic.modules.play import cb_admin_check
+from DaisyXMusic.modules.play import transcode
+from DaisyXMusic.modules.play import convert_seconds
+from DaisyXMusic.modules.play import time_to_seconds
+from DaisyXMusic.modules.play import changeImageSize
+from DaisyXMusic.config import BOT_NAME as bn
+from DaisyXMusic.config import DURATION_LIMIT
+from DaisyXMusic.config import UPDATES_CHANNEL as updateschannel
+from DaisyXMusic.config import que
+from DaisyXMusic.function.admins import admins as a
+from DaisyXMusic.helpers.errors import DurationLimitError
+from DaisyXMusic.helpers.decorators import errors
+from DaisyXMusic.helpers.admins import get_administrators
+from DaisyXMusic.helpers.channelmusic import get_chat_id
+from DaisyXMusic.helpers.decorators import authorized_users_only
+from DaisyXMusic.helpers.filters import command, other_filters
+from DaisyXMusic.helpers.gets import get_file_name
+from DaisyXMusic.services.callsmusic import callsmusic, queues
+from DaisyXMusic.services.callsmusic.callsmusic import client as USER
+from DaisyXMusic.services.converter.converter import convert
+from DaisyXMusic.services.downloaders import youtube
 
 chat_id = None
 
@@ -77,7 +77,7 @@ async def playlist(client, message):
         temp.append(t)
     now_playing = temp[0][0]
     by = temp[0][1].mention(style="md")
-    msg = "**Lagu yang sedang diputar** in {}".format(lel.linked_chat.title)
+    msg = "**Lagu yang sedang diputar** di {}".format(lel.linked_chat.title)
     msg += "\n- " + now_playing
     msg += "\n- Req by " + by
     temp.pop(0)
@@ -146,7 +146,7 @@ async def ee(client, message):
     if stats:
         await message.reply(stats)
     else:
-        await message.reply("**Tidak ada lagu yang sedang dimainkan!**")
+        await message.reply("Tidak ada lagu yang sedang dimainkan!")
 
 
 @Client.on_message(filters.command(["channelplayer","cplayer"]) & filters.group & ~filters.edited)
@@ -169,7 +169,7 @@ async def settings(client, message):
         else:
             await message.reply(stats, reply_markup=r_ply("play"))
     else:
-        await message.reply("**Tidak ada lagu yang sedang dimainkan!**")
+        await message.reply("Tidak ada lagu yang sedang dimainkan!")
 
 
 @Client.on_callback_query(filters.regex(pattern=r"^(cplaylist)$"))
@@ -195,7 +195,7 @@ async def p_cb(b, cb):
             temp.append(t)
         now_playing = temp[0][0]
         by = temp[0][1].mention(style="md")
-        msg = "**Lagu yang sedang diputar** in {}".format(conv.title)
+        msg = "**Lagu yang sedang diputar** di {}".format(conv.title)
         msg += "\n- " + now_playing
         msg += "\n- Req by " + by
         temp.pop(0)
@@ -264,7 +264,7 @@ async def m_cb(b, cb):
     elif type_ == "cplaylist":
         queue = que.get(cb.message.chat.id)
         if not queue:
-            await cb.message.edit("**Tidak ada lagu yang sedang dimainkan!**")
+            await cb.message.edit("Tidak ada lagu yang sedang dimainkan!")
         temp = []
         for t in queue:
             temp.append(t)
@@ -421,10 +421,11 @@ async def play(_, message: Message):
         # lmoa = await client.get_chat_member(chid,wew)
     except:
         await lel.edit(
-            f"<i> {user.first_name} Assistant Bot terkena banned dari Grup ini, Minta admin untuk unbanned assistant bot lalu tambahkan {user.first_name} Assistant Bot secara manual.</i>"
+            f"<i> {user.first_name} Assistant Bot terkena banned dari Grup ini, Minta admin untuk unbanned assistant bot lalu tambahkan {user.first_name} Assistant Bot secara manual</i>"
         )
         return
     message.from_user.id
+    text_links = None
     message.from_user.first_name
     await lel.edit("🔍 **Mencari lagu**")
     message.from_user.id
@@ -432,6 +433,21 @@ async def play(_, message: Message):
     message.from_user.first_name
     user_name = message.from_user.first_name
     rpk = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
+    if message.reply_to_message:
+        entities = []
+        toxt = message.reply_to_message.text or message.reply_to_message.caption
+        if message.reply_to_message.entities:
+            entities = message.reply_to_message.entities + entities
+        elif message.reply_to_message.caption_entities:
+            entities = message.reply_to_message.entities + entities
+        urls = [entity for entity in entities if entity.type == 'url']
+        text_links = [
+            entity for entity in entities if entity.type == 'text_link'
+        ]
+    else:
+        urls=None
+    if text_links:
+        urls = True    
     audio = (
         (message.reply_to_message.audio or message.reply_to_message.voice)
         if message.reply_to_message
@@ -446,7 +462,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton("Daftar Playlist", callback_data="cplaylist"),
-                    InlineKeyboardButton("Group", url="https://t.me/IMPR0B4BL3"),
+                    InlineKeyboardButton("Group", url="https://t.me/infble"),
                 ],
                 [InlineKeyboardButton(text="❌ Tutup", callback_data="ccls")],
             ]
@@ -459,11 +475,52 @@ async def play(_, message: Message):
         views = "Ditambahkan secara local"
         requested_by = message.from_user.first_name
         await generate_cover(requested_by, title, views, duration, thumbnail)
-        file_path = await converter.convert(
+        file_path = await convert(
             (await message.reply_to_message.download(file_name))
             if not path.isfile(path.join("downloads", file_name))
             else file_name
         )
+    elif urls:
+        query = toxt
+        await lel.edit("🎶 **Sedang memproses lagu yang diminta**")
+        ydl_opts = {"format": "bestaudio[ext=m4a]"}
+        try:
+            results = YoutubeSearch(query, max_results=1).to_dict()
+            url = f"https://youtube.com{results[0]['url_suffix']}"
+            # print(results)
+            title = results[0]["title"][:40]
+            thumbnail = results[0]["thumbnails"][0]
+            thumb_name = f"thumb{title}.jpg"
+            thumb = requests.get(thumbnail, allow_redirects=True)
+            open(thumb_name, "wb").write(thumb.content)
+            duration = results[0]["duration"]
+            results[0]["url_suffix"]
+            views = results[0]["views"]
+
+        except Exception as e:
+            await lel.edit(
+                "Lagu yang diminta ga ketemu nih, coba cari dengan judul lagu yang lebih jelas.\nKetik `/help` bila butuh bantuan"
+            )
+            print(str(e))
+            return
+        dlurl = url
+        dlurl=dlurl.replace("youtube","youtubepp")
+        keyboard = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("Daftar Playlist", callback_data="cplaylist"),
+                    InlineKeyboardButton("Group", url="https://t.me/infble"),
+                ],
+                [
+                    InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
+                    InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
+                ],
+                [InlineKeyboardButton(text="❌ Tutup", callback_data="ccls")],
+            ]
+        )
+        requested_by = message.from_user.first_name
+        await generate_cover(requested_by, title, views, duration, thumbnail)
+        file_path = await convert(youtube.download(url))        
     else:
         query = ""
         for i in message.command[1:]:
@@ -491,13 +548,18 @@ async def play(_, message: Message):
             print(str(e))
             return
 
+        dlurl = url
+        dlurl=dlurl.replace("youtube","youtubepp")
         keyboard = InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton("Daftar Playlist", callback_data="cplaylist"),
-                    InlineKeyboardButton("Group", url="https://t.me/IMPR0B4BL3"),
+                    InlineKeyboardButton("Group", url="https://t.me/infble"),
                 ],
-                [InlineKeyboardButton(text="Owner", url="https://t.me/rxsherli")],
+                [
+                    InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
+                    InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
+                ],
                 [InlineKeyboardButton(text="❌ Tutup", callback_data="ccls")],
             ]
         )
@@ -515,7 +577,7 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption=f"🎵 **Lagu yang Anda minta dalam antrian diposisi** {position}!",
+            caption=f"🎵 **Lagu yang Anda minta dalam antrian diposisi {position}!",
             reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -595,7 +657,7 @@ async def deezer(client: Client, message_: Message):
                 except Exception:
                     # print(e)
                     await lel.edit(
-                        f"<b> ❗️ Flood Wait Error ❗️ \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
+                        f"<b>❗️ Flood Wait Error ❗️ \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
                         "\n\nAtau tambahkan Assistant Bot secara manual ke Grup Anda dan coba lagi</b>",
                     )
     try:
@@ -603,7 +665,7 @@ async def deezer(client: Client, message_: Message):
         # lmoa = await client.get_chat_member(chid,wew)
     except:
         await lel.edit(
-            f"<i> {user.first_name} Assistant Bot terkena banned dari Grup ini, Minta admin untuk unbanned assistant bot lalu tambahkan {user.first_name} Assistant Bot secara manual.</i>"
+            f"<i> {user.first_name} Assistant Bot terkena banned dari Grup ini, Minta admin untuk unbanned assistant bot lalu tambahkan {user.first_name} Assistant Bot secara manual</i>"
         )
         return
     requested_by = message_.from_user.first_name
@@ -633,7 +695,7 @@ async def deezer(client: Client, message_: Message):
                 InlineKeyboardButton("Group", url="https://t.me/IMPR0B4BL3"),
             ],
             [InlineKeyboardButton(text="Owner", url="https://t.me/rxsherli")],
-            [InlineKeyboardButton(text="❌ Tutup", callback_data="ccls")],
+            [InlineKeyboardButton(text="❌ Close", callback_data="ccls")],
         ]
     )
     file_path = await convert(wget.download(url))
@@ -649,7 +711,7 @@ async def deezer(client: Client, message_: Message):
         loc = file_path
         appendable = [s_name, r_by, loc]
         qeue.append(appendable)
-        await res.edit_text(f"🎵 **Lagu yang Anda minta dalam antrian diposisi** {position}!")
+        await res.edit_text(f"🎵 **Lagu yang Anda minta dalam antrian diposisi** {position}")
     else:
         await res.edit_text(f"🎵 Playing.....")
 
@@ -751,7 +813,7 @@ async def jiosaavn(client: Client, message_: Message):
         sname = songs.result[0].song
         slink = songs.result[0].media_url
         ssingers = songs.result[0].singers
-        sthumb = songs.result[0].image
+        sthumb = "https://telegra.ph/file/f6086f8909fbfeb0844f2.png"
         sduration = int(songs.result[0].duration)
     except Exception as e:
         await res.edit("Tidak ada lagu yang ditemukan!")
@@ -761,7 +823,7 @@ async def jiosaavn(client: Client, message_: Message):
         [
             [
                 InlineKeyboardButton("Daftar Playlist", callback_data="cplaylist"),
-                InlineKeyboardButton("Group", url="https://t.me/IMPR0B4BL3"),
+                InlineKeyboardButton("Group", url="https://t.me/infble"),
             ],
             [
                 InlineKeyboardButton(
@@ -786,7 +848,7 @@ async def jiosaavn(client: Client, message_: Message):
             chat_id=message_.chat.id,
             reply_markup=keyboard,
             photo="final.png",
-            caption=f"🎵 **Lagu yang Anda minta dalam antrian diposisi** {position}!",
+            caption=f"🎵 **Lagu yang Anda minta dalam antrian diposisi** {position}",
         )
 
     else:

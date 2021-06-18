@@ -51,8 +51,9 @@ from MusikVcg.services.callsmusic.callsmusic import client as USER
 from MusikVcg.services.converter.converter import convert
 from MusikVcg.services.downloaders import youtube
 
+aiohttpsession = aiohttp.ClientSession()
 chat_id = None
-arq = ARQ("https://thearq.tech", ARQ_API_KEY)
+arq = ARQ("https://thearq.tech", ARQ_API_KEY, aiohttpsession)
 
 
 def cb_admin_check(func: Callable) -> Callable:
@@ -478,7 +479,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton("Daftar Playlist", callback_data="playlist"),
-                    InlineKeyboardButton("Group", url="https://t.me/IMPR0B4BL3"),
+                    InlineKeyboardButton("Group", url="https://t.me/infble"),
                 ],
                 [InlineKeyboardButton(text="❌ Tutup", callback_data="cls")],
             ]
@@ -527,7 +528,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton("Daftar Playlist", callback_data="playlist"),
-                    InlineKeyboardButton("Group", url="https://t.me/IMPR0B4BL3"),
+                    InlineKeyboardButton("Group", url="https://t.me/infble"),
                 ],
                 [InlineKeyboardButton(text="Owner", url="https://t.me/rxsherli")],
                 [InlineKeyboardButton(text="❌ Tutup", callback_data="cls")],
@@ -657,7 +658,7 @@ async def deezer(client: Client, message_: Message):
         [
             [
                 InlineKeyboardButton("Daftar Playlist", callback_data="playlist"),
-                InlineKeyboardButton("Group", url="https://t.me/IMPR0B4BL3"),
+                InlineKeyboardButton("Group", url="https://t.me/infble"),
             ],
             [InlineKeyboardButton(text="Owner", url="https://t.me/rxsherli")],
             [InlineKeyboardButton(text="❌ Tutup", callback_data="cls")],
@@ -784,7 +785,7 @@ async def jiosaavn(client: Client, message_: Message):
         [
             [
                 InlineKeyboardButton("Daftar Playlist", callback_data="playlist"),
-                InlineKeyboardButton("Group", url="https://t.me/IMPR0B4BL3"),
+                InlineKeyboardButton("Group", url="https://t.me/infble"),
             ],
             [
                 InlineKeyboardButton(
