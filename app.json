@@ -3,7 +3,7 @@
   "description": "Open-Source bot to play songs in your Telegram's Group Voice Chat. Powered by PyTgCalls.",
   "logo": "https://telegra.ph/file/40240a68a57a077930194.jpg",
   "keywords": ["music", "voicechat", "telegram"],
-  "repository": "https://github.com/TeamDaisyX/MusikVcgV2",
+  "repository": "https://github.com/CollinFowel/MusikVcgV2",
   "stack": "container",
   "env": {
     "SESSION_NAME": {
@@ -35,10 +35,10 @@
     "ARQ_API_KEY": {
       "description": "Ambil token mu dari @ARQRobot.",
       "required": false,
-      "value": "EXTQGK-WXJBAZ-INTYPR-WVSWRE-ARQ"
+      "value": "EAFVEZ-QBLYWJ-HIOIXM-BAAVLG-ARQ"
     },    
     "BG_IMAGE": {
-      "description": "Masukan link untuk bg wajib transparan! [ABAIKAN INI KALO TIDAK NGERTI].",
+      "description": "Isi dengan link untuk custom background wajib PNG! [ABAIKAN INI KALO TIDAK NGERTI].",
       "required": false,
       "value": " https://telegra.ph/file/1d14d4f7ac156f4b87dd0.png"
     },
@@ -46,6 +46,11 @@
       "description": "App ID dari my.telegram.org/apps",
       "required": true
     },
+    "PMPERMIT": {
+      "description": "Abaikan ini, kalo bot udah aktif bisa diatur dengan /pmpermit off atau on",
+      "required": false,
+      "value": "ENABLE"
+    },    
     "API_HASH": {
       "description": "App hash dari my.telegram.org/apps",
       "required": true
