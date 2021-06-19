@@ -121,4 +121,4 @@ async def admincache(client, message: Message):
             for member in await message.chat.get_members(filter="administrators")
         ],
     )
-    await message.reply_text("✅ Daftar admin berhasil diperbaharui!")
+    await message.reply_text("✅ Bot telah aktif\n✅ Daftar admin berhasil diperbaharui!")
