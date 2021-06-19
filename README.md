@@ -2,13 +2,14 @@
   <img src="./etc/logo_readme.jpg" alt="MusikVCG logo">
 </p>
 <h1 align="center">
-  <b>🎶 MusikVCG Telegram Userbot</b>
-</h1>
+  <b>MusikVCG Telegram Userbot</b>
+</h1>,
 
 ### A bot that can play music on Telegram Group and Channel Voice Chats
 #### POWERED BY [PYTGCALLS](https://github.com/pytgcalls/pytgcalls)
+### Available on telegram as [@SNFMusicBot](https://t.me/SNFMusicBot)
 
-<h2> Whats new 🔥 </h2>
+<h2> Features 🔥 </h2>
 
 - This bot musik player language has been edited from English to Indonesian
 - Thumbnail Support
@@ -16,7 +17,7 @@
 - Current playback support
 - Showing track names when skipping
 - Zero downtime, Fully Stable
-- DEEZER,YOUTUBE & SAAVN PLAYBACK SUPPORTED
+- Deezer,Youtube & Saavn playback support
 - Settings panel
 - Control with buttons
 - Userbot auto join
@@ -24,7 +25,7 @@
 
 ## 🚀 Deployment
 
-### 💜 Heroku
+### ⛓️ Heroku 🔫
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/CollinFowel/MusikVcgV2)
 
@@ -74,6 +75,7 @@ $ python(3) -m MusikVcg
 ### Commands for Channel Music Play 🛠
 For linked group admins only:
 - `/cplay <song name>` - play song you requested
+- `/cplay <reply to link>` - play replied youtube link
 - `/cplay <reply to audio>` - play replied file
 - `/cdplay <song name>` - play song you requested via deezer
 - `/csplay <song name>` - play song you requested via jio saavn
@@ -90,30 +92,28 @@ For linked group admins only:
 If you donlt like to play in linked channel:
  1. Get your channel ID.
  2. Rename your group to: Channel Music: your_channel_id
- 3. Add @DaisyXBot as Channel admin with full perms
+ 3. Add @SNFMusicBot as Channel admin with full perms
  4. add helper to channel
  5. Simply send commands in your group.
 
+### Commands for Sudo Users ⚔️
+- `/userbotleaveall` - remove assistant from all chats
+- `/gcast <reply to message>` - globally brodcast replied message to all chats
+- `/pmpermit [on/off]` - enable/disable pmpermit message
 
-
+#### Pmpermit
+- `.a` - approove someone to pm you
+- `.da` - disapproove someone to pm you
++ Sudo Users can execute any command in any groups
 
 ### Credits
+Don't edit this part
+
 #### Special Credits
 - [Rojserbest](http://github.com/rojserbes): Callsmusic Developer
 
 This bot is based on the original work done by [Rojserbest](http://github.com/rojserbest). Without his hardwork daisyxmusic won't exist. 
 DaisyXmusic is a modified version of [Callsmusic](https://github.com/callsmusic/callsmusic) for fit the needs of @DaisyXbot users
 
-#### Contribtors
-- [Repi](https://github.com/collinfowel) : Dev on MusikVCG 
-- [InukaASiTH](https://github.com/InukaAsith): Dev
-- [Rojserbest](http://github.com/rojserbes): Dev
-- [Wrench](https://github.com/EverythingSuckz/): Dev
-- [QueenArzoo](https://github.com/QueenArzoo): Dev
-- [lucifeermorningstar](https://github.com/lucifeermorningstar): Dev
-- [AuraXNetwork](https://github.com/AuraXNetwork/AuraXMusicBot)
-- [Hamker Cat](https://github.com/thehamkercat/)
-- [Anjana-Ma](https://github.com/Anjana-Ma): 
-- [ImJanindu](https://github.com/ImJanindu): 
-- [Laky](https://github.com/Laky-64) & [Andrew](https://github.com/AndrewLaneX): PyTgCalls
-- [Original Repo owners](https://github.com/suprojects/CallsMusic)
+### This Repo Managed By
+- [Collin](http://t.me/CollinFowel): Owner This Repo
