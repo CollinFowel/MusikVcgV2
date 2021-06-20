@@ -546,7 +546,7 @@ async def play(_, message: Message):
                 ],
                 [
                     InlineKeyboardButton(text="Owner", url="https://t.me/rxsherli"),
-                    InlineKeyboardButton(text="Download Lagu", url=f"{dlurl}"),
+                    InlineKeyboardButton(text="Download", url=f"{dlurl}"),
                 ],
                 [InlineKeyboardButton(text="❌ Tutup", callback_data="cls")],
             ]
@@ -590,7 +590,7 @@ async def play(_, message: Message):
                 ],
                 [
                     InlineKeyboardButton(text="Owner", url="https://t.me/rxsherli"),
-                    InlineKeyboardButton(text="Download Lagu", url=f"{dlurl}"),
+                    InlineKeyboardButton(text="Download", url=f"{dlurl}"),
                 ],
                 [InlineKeyboardButton(text="❌ Tutup", callback_data="cls")],
             ]
@@ -626,12 +626,12 @@ async def play(_, message: Message):
         try:
             callsmusic.pytgcalls.join_group_call(chat_id, file_path)
         except:
-            message.reply("Group Call is not connected or I can't join it")
+            message.reply("Obrolan Grup tidak tersambung atau saya tidak dapat bergabung")
             return
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="Panggilan Grup tidak tersambung atau saya tidak dapat bergabung".format(
+            caption="🔊 **Sedang memutar lagu request-an dari** {} ".format(
                 message.from_user.mention()
             ),
         )
