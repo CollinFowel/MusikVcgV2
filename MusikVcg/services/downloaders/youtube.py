@@ -39,12 +39,8 @@ def download(url: str) -> str:
 
     if duration > DURATION_LIMIT:
         raise DurationLimitError(
-            f"❌ Video yang berdurasi lebih dari {DURATION_LIMIT} menit tidak dibolehkan, video yang diperbolehkan adalah {duration} menit"
-        )
-    try:
-        ydl.download([url])
-    except:
-        raise DurationLimitError(
-            f"❌ Video yang berdurasi lebih dari {DURATION_LIMIT} menit tidak dibolehkan, video yang diperbolehkan adalah {duration} menit"
-        )
+            f"❌ Video atau lagu dengan durasi lebih dari {DURATION_LIMIT} menit tidak dapat diputar!, "
+            f"Durasi yg diizinkan adalah {duration} menit .",
+       )
+    ydl.download([url])
     return path.join("downloads", f"{info['id']}.{info['ext']}")

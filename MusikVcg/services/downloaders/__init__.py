@@ -1,2 +1,3 @@
-from MusikVcg.services.downloaders.youtube import download
+from MusikVcg.services.downloaders import youtube
 
+__all__ = ["youtube"]
