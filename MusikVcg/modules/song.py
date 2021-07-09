@@ -35,6 +35,7 @@ from pyrogram.types import Message
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
 
+from MusikVcg.config import DURATION_LIMIT
 from MusikVcg.modules.play import arq
 
 
@@ -49,7 +50,7 @@ def song(client, message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    m = message.reply("🔍 **Mencari lagu**")
+    m = message.reply("🔍 **Mencari lagu**"
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -66,7 +67,7 @@ def song(client, message):
         results[0]["views"]
 
     except Exception as e:
-        m.edit("❌ Lagu yang diminta ga ketemu nih, coba cari dengan judul lagu yang lebih jelas.\nKetik `/help` bila butuh bantuan.")
+        m.edit("❌ <i>Lagu tidak ditemukan. </i> Coba cari dengan judul lagu yang lebih jelas, Ketik `/help` bila butuh bantuan."
         print(str(e))
         return
     m.edit("↻ Lagunya lagi didownload nih...")
@@ -350,7 +351,7 @@ async def ytmusic(client, message: Message):
     urlissed = get_text(message)
 
     pablo = await client.send_message(
-        message.chat.id, f"`Mengambil {urlissed} video dari YouTube. Mohon tunggu...`"
+        message.chat.id, f"`Getting {urlissed} From Youtube Servers. Please Wait.`"
     )
     if not urlissed:
         await pablo.edit("Invalid Command Syntax, Please Check Help Menu To Know More!")
@@ -385,9 +386,9 @@ async def ytmusic(client, message: Message):
             infoo = ytdl.extract_info(url, False)
             duration = round(infoo["duration"] / 60)
 
-            if duration > 8:
+            if duration > DURATION_LIMIT:
                 await pablo.edit(
-                    f"❌ Video yang berdurasi lebih dari 8 menit tidak diperbolehkan, video yang diperbolehkan adalah {duration} menit"
+                    f"❌ Videos longer than {DURATION_LIMIT} minute(s) aren't allowed, the provided video is {duration} minute(s)"
                 )
                 is_downloading = False
                 return

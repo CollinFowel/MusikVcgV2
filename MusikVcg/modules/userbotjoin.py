@@ -15,11 +15,13 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-from pyrogram import Client, filters
+from pyrogram import Client
+from pyrogram import filters
 from pyrogram.errors import UserAlreadyParticipant
 import asyncio
-from MusikVcg.helpers.decorators import authorized_users_only, errors
-from MusikVcg.services.callsmusic.callsmusic import client as USER
+from MusikVcg.helpers.decorators import authorized_users_only
+from MusikVcg.helpers.decorators import errors
+from MusikVcg.services.callsmusic import client as USER
 from MusikVcg.config import SUDO_USERS
 
 @Client.on_message(filters.command(["userbotjoin"]) & ~filters.private & ~filters.bot)
@@ -50,7 +52,7 @@ async def addchannel(client, message):
     except Exception as e:
         print(e)
         await message.reply_text(
-            f"<b>  Flood Wait Error  \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
+            f"<b> Flood Wait Error  \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
             "\n\nAtau tambahkan Assistant Bot secara manual ke Grup Anda dan coba lagi</b>",
         )
         return
@@ -76,8 +78,8 @@ async def bye(client, message):
     if message.from_user.id in SUDO_USERS:
         left=0
         failed=0
-        await message.reply("Assistant meninggalkan semua chat")
-        for dialog in USER.iter_dialogs():
+        lol = await message.reply("Assistant meninggalkan semua chat")
+        async for dialog in USER.iter_dialogs():
             try:
                 await USER.leave_chat(dialog.chat.id)
                 left = left+1
@@ -125,7 +127,7 @@ async def addcchannel(client, message):
     except Exception as e:
         print(e)
         await message.reply_text(
-            f"<b>  Flood Wait Error  \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
+            f"<b>Flood Wait Error  \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
             "\n\nAtau tambahkan Assistant Bot secara manual ke Grup Anda dan coba lagi.</b>",
         )
         return

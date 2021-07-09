@@ -16,9 +16,17 @@
 
 import logging
 from MusikVcg.modules.msg import Messages as tr
-from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-from MusikVcg.config import SOURCE_CODE,ASSISTANT_NAME,PROJECT_NAME,SUPPORT_GROUP,UPDATES_CHANNEL,BOT_USERNAME
+from pyrogram import Client
+from pyrogram import filters
+from pyrogram.types import InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardButton
+from pyrogram.types import Message
+from MusikVcg.config import SOURCE_CODE
+from MusikVcg.config import ASSISTANT_NAME
+from MusikVcg.config import PROJECT_NAME
+from MusikVcg.config import SUPPORT_GROUP
+from MusikVcg.config import UPDATES_CHANNEL
+from MusikVcg.config import BOT_USERNAME
 logging.basicConfig(level=logging.INFO)
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['start']))
@@ -33,9 +41,9 @@ def _start(client, message):
                         "➕ Tambahkan Saya Ke Grup ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
                 [
                     InlineKeyboardButton(
-                        "📲 Group", url=f"https://t.me/IMPR0B4BL3"), 
+                        "📲 Group", url=f"https://t.me/infble"), 
                     InlineKeyboardButton(
-                        "👤 Owner", url=f"https://t.me/rxsherli")
+                        "👤 Owner", url=f"https://t.me/CollinFowel")
                 ],[
                     InlineKeyboardButton(
                         "💬 Tanya tanya klik disini", url=f"https://t.me/CollinFowel")
@@ -94,8 +102,8 @@ def map(pos):
         url = f"https://t.me/{SUPPORT_GROUP}"
         button = [
             [InlineKeyboardButton("➕ Tambahkan Saya Ke Grup ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
-            [InlineKeyboardButton(text = '📲 Group', url=f"https://t.me/IMPR0B4BL3"),
-             InlineKeyboardButton(text = '👤 Owner', url=f"https://t.me/rxsherli")],
+            [InlineKeyboardButton(text = '📲 Group', url=f"https://t.me/infble"),
+             InlineKeyboardButton(text = '👤 Owner', url=f"https://t.me/CollinFowel")],
             [InlineKeyboardButton(text = '💬 Tanya tanya klik disini', url=f"https://t.me/CollinFowel")],
             [InlineKeyboardButton(text = '◀️', callback_data = f"help+{pos-1}")]
         ]
