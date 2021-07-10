@@ -1,15 +1,17 @@
-<h1 align="centre">DAISYXMUSIC V5.0 🎵</h1>
+<p align="center">
+  <img src="./etc/logo_readme.jpg" alt="MusikVCG logo">
+</p>
+<h1 align="center">
+  <b>MusikVCG Telegram Userbot</b>
+</h1>,
 
 ### A bot that can play music on Telegram Group and Channel Voice Chats
-#### POWERED BY [MARSHALX TGCALLS](https://github.com/MarshalX/tgcalls)
-### Available on telegram as [@DaisyXbot](https://t.me/daisyxbot)
-
-<p align="center">
-  <img src="https://telegra.ph/file/dd04b1968f1bc1169d162.jpg">
-</p>
+#### POWERED BY [PYTGCALLS](https://github.com/pytgcalls/pytgcalls)
+### Available on telegram as [@SNFMusicBot](https://t.me/SNFMusicBot)
 
 <h2> Features 🔥 </h2>
 
+- This bot musik player language has been edited from English to Indonesian
 - Thumbnail Support
 - Playlist Support
 - Current playback support
@@ -24,24 +26,24 @@
 
 ## 🚀 Deployment
 
-### 💜 Heroku
+### ⛓️ Heroku 🔫
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/TeamDaisyX/DaisyXMusic)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/CollinFowel/MusikVcgV2)
 
-Get pyrogram (p)  `SESSION` from here:
+Klik tombol dibawah untuk mengambil Pyrogram String Session
 
-[![Run on Repl.it](https://repl.it/badge/github/ChankitSaini/GenerateStringSession)](https://replit.com/@ChankitSaini/GenerateStringSession)
+<a href="https://replit.com/@CollinFowel/StringSessionPyrogram#main.py"><img src="https://img.shields.io/badge/run-string__session.py-blue?style=for-the-badge&logo=repl.it" alt="generate_string" /></a>
 
 ### ⚔ Self-hosting (For Devs) 
 ```sh
 # Install Git First (apt-instll git)
-$ git clone https://github.com/TeamDaisyX/DaisyXmusic
-$ cd DaisyXMusic
+$ git clone https://github.com/CollinFowel/MusikVcgV2
+$ cd MusikVcg
 # Upgrade sources
 # Install All Requirements 
 $ pip3 install -r requirements.txt
 # Fork This Repo and fill local.env and config.py both with your own values.Then Start The Bot
-$ python3 -m DaisyXMusic
+$ python3 -m MusikVcg
 ```
 
 ### Commands for Group 🛠
@@ -91,7 +93,7 @@ For linked group admins only:
 If you donlt like to play in linked channel:
  1. Get your channel ID.
  2. Rename your group to: Channel Music: your_channel_id
- 3. Add @DaisyXBot as Channel admin with full perms
+ 3. Add @SNFMusicBot as Channel admin with full perms
  4. add helper to channel
  5. Simply send commands in your group.
 
@@ -139,4 +141,4 @@ Also DaisyXmusic is inspired by many opensource bots and userbots
     
 DaisyXMusic is Free Software: You can use, study share and improve it at your will. Specifically you can redistribute and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.    
 
-## Made with ♥️ by [TeamDaisyX](https://github.com/TeamDaisyX)
+## Made with ♥️ by [Collin](http://t.me/CollinFowel)
