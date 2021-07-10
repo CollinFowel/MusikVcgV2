@@ -997,7 +997,7 @@ async def deezer(client: Client, message_: Message):
                 InlineKeyboardButton("Daftar Playlist", callback_data="playlist"),
                 InlineKeyboardButton("Owner", url="https://t.me/OWNER_MUSICVCG/3"),
             ],
-            [InlineKeyboardButton(text="ᴊ ᴏ ɪ ɴ  ɢ ᴄ", url="https://t.me/infble"),
+            [InlineKeyboardButton(text="ᴊ ᴏ ɪ ɴ  ɢ ᴄ", url="https://t.me/infble")],
             [InlineKeyboardButton(text="❌ Tutup", callback_data="cls")],
         ]
     )
