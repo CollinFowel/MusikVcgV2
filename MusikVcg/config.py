@@ -14,11 +14,10 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # Modified by Inukaasith
-# REMODIFIED by CollinFowel
 
 import os
-from os import path
 from os import getenv
+
 from dotenv import load_dotenv
 
 if os.path.exists("local.env"):
@@ -31,7 +30,7 @@ BOT_NAME = getenv("BOT_NAME")
 UPDATES_CHANNEL = getenv("UPDATES_CHANNEL", "MusikVcg")
 BG_IMAGE = getenv("BG_IMAGE", "https://telegra.ph/file/1d14d4f7ac156f4b87dd0.png")
 admins = {}
-API_ID = int(getenv("API_ID", ""))
+API_ID = int(getenv("API_ID"))
 API_HASH = getenv("API_HASH")
 BOT_USERNAME = getenv("BOT_USERNAME")
 ASSISTANT_NAME = getenv("ASSISTANT_NAME", "MusikVcg")
@@ -43,4 +42,5 @@ ARQ_API_KEY = getenv("ARQ_API_KEY", None)
 PMPERMIT = getenv("PMPERMIT", None)
 LOG_GRP = getenv("LOG_GRP", None)
 COMMAND_PREFIXES = list(getenv("COMMAND_PREFIXES", "/ !").split())
+
 SUDO_USERS = list(map(int, getenv("SUDO_USERS").split()))
