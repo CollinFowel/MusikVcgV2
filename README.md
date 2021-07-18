@@ -28,13 +28,13 @@
 
 ### ⛓️ Heroku 🔫
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/CollinFowel/MusikVcgV2)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/CollinFowel/MusikVcgV2/tree/master)
 
 Klik tombol dibawah untuk mengambil Pyrogram String Session
 
 <a href="https://replit.com/@CollinFowel/StringSessionPyrogram#main.py"><img src="https://img.shields.io/badge/run-string__session.py-blue?style=for-the-badge&logo=repl.it" alt="generate_string" /></a>
 
-### ⚔ Self-hosting (For Devs) 
+### 💻 Self-hosting (For Devs) 
 ```sh
 # Install Git First (apt-instll git)
 $ git clone https://github.com/CollinFowel/MusikVcgV2
