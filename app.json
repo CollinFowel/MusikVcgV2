@@ -1,0 +1,76 @@
+{
+  "name": "MusikVcg",
+  "logo": "https://telegra.ph/file/40240a68a57a077930194.jpg",
+  "description": "Open-Source bot to play songs in your Telegram's Group Voice Chat. Powered by PyTgCalls.",
+  "keywords": ["music", "voicechat", "telegram"],
+  "repository": "https://github.com/CollinFowel/MusikVcgV2",
+  "stack": "heroku-20",
+  "buildpacks": [
+   {
+     "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+   },
+   {
+     "url": "heroku/python"
+   }   
+  ],        
+  "env": {
+    "SESSION_NAME": {
+      "description": "Silahkan ambil Pyrogram session string di https://replit.com/@CollinFowel/StringSessionPyrogram#main.py",
+      "required": true
+    },
+    "BOT_TOKEN": {
+      "description": "Dapatkan bot token dari @BotFather",
+      "required": true
+    },
+    "BOT_USERNAME": {
+      "description": "Masukan username bot mu TANPA TANDA @",
+      "required": true
+    },
+    "BOT_NAME": {
+      "description": "Masukan nama bot mu, NAMA YA BUKAN USERNAME",
+      "required": false,
+      "value": ""
+    },
+    "PROJECT_NAME": {
+      "description": "Masukan nama Project ini bebas apa saja.",
+      "required": false,
+      "value": "MusikVcg"
+    },
+    "ASSISTANT_NAME": {
+      "description": "Masukan username Assistant Bot mu tanpa tanda @",
+      "required": true
+    },
+    "ARQ_API_KEY": {
+      "description": "Dapatkan token mu dari @ARQRobot.",
+      "required": false,
+      "value": ""
+    },    
+    "BG_IMAGE": {
+      "description": "Isi dengan link custom background yg kalian punya wajib PNG! [ABAIKAN INI KALO TIDAK NGERTI].",
+      "required": false,
+      "value": "https://telegra.ph/file/8c7f5484c6f39fa5043be.png"
+    },     
+    "API_ID": {
+      "description": "Dapatkan App ID dari my.telegram.org/apps",
+      "required": true
+    },
+    "PMPERMIT": {
+      "description": "Abaikan ini, kalo bot udah aktif bisa diatur dengan /pmpermit off atau on",
+      "required": false,
+      "value": "ENABLE"
+    },    
+    "API_HASH": {
+      "description": "Dapatkan App hash dari my.telegram.org/apps",
+      "required": true
+    },
+    "SUDO_USERS": {
+      "description": "Masukan ID akun telegram kalian jika ingin menambahkan ID lain pisahkan dengan spasi.",
+      "required": true
+    },
+    "DURATION_LIMIT": {
+      "description": "Masukan batas durasi audio yg kalian inginkan (menit).",
+      "required": true,
+      "value": "10"
+    }
+  }
+}
