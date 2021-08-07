@@ -144,4 +144,4 @@ async def admincache(client, message: Message):
             for member in await conchat.linked_chat.get_members(filter="administrators")
         ],
     )
-    await message.reply_text("✅ Bot telah aktif\n✅ Daftar admin diperbaharui!\n\n✨ ᴊᴏɪɴ ᴊᴜɢᴀ ɢᴄ ᴋᴀᴍɪ ᴅɪ @infble")
+    await message.reply_text("✅ Bot telah aktif\n✅ Daftar admin diperbaharui!\n\n✨ **Join Group kita ya @ChatBotXanon")
