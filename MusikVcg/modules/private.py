@@ -20,7 +20,7 @@ def _start(client, message):
                         "➕ Tambahkan Saya Ke Grup ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
                 [
                     InlineKeyboardButton(
-                        "📲 Group", url=f"https://t.me/infble"), 
+                        "📲 Group", url=f"https://t.me/ChatBotXanon"), 
                     InlineKeyboardButton(
                         "👤 Owner", url=f"https://t.me/CollinFowel")
                 ],[
@@ -81,7 +81,7 @@ def map(pos):
         url = f"https://t.me/{SUPPORT_GROUP}"
         button = [
             [InlineKeyboardButton("➕ Tambahkan Saya Ke Grup ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
-            [InlineKeyboardButton(text = '📲 Group', url=f"https://t.me/infble"),
+            [InlineKeyboardButton(text = '📲 Group', url=f"https://t.me/ChatBotXanon"),
              InlineKeyboardButton(text = '👤 Owner', url=f"https://t.me/CollinFowel")],
             [InlineKeyboardButton(text = '💬 Tanya tanya klik disini', url=f"https://t.me/CollinFowel")],
             [InlineKeyboardButton(text = '◀️', callback_data = f"help+{pos-1}")]
