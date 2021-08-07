@@ -25,7 +25,8 @@ from MusikVcg.config import DURATION_LIMIT
 from MusikVcg.helpers.errors import DurationLimitError
 
 ydl_opts = {
-    "format": "bestaudio[ext=m4a]",
+    "format": "bestaudio/best",
+    "verbose": True,
     "geo-bypass": True,
     "nocheckcertificate": True,
     "outtmpl": "downloads/%(id)s.%(ext)s",
@@ -40,12 +41,12 @@ def download(url: str) -> str:
 
     if duration > DURATION_LIMIT:
         raise DurationLimitError(
-            f" Video atau lagu dengan durasi lebih dari {DURATION_LIMIT} menit tidak dapat diputar! Durasi yg diizinkan adalah {duration} menit."
+            f"Video atau lagu dengan durasi lebih dari {DURATION_LIMIT} menit tidak dapat diputar! Durasi yg diizinkan adalah {duration} menit"
         )
     try:
         ydl.download([url])
     except:
         raise DurationLimitError(
-            f" Video atau lagu dengan durasi lebih dari {DURATION_LIMIT} menit tidak dapat diputar! Durasi yg diizinkan adalah {duration} menit."
+            f"Video atau lagu dengan durasi lebih dari {DURATION_LIMIT} menit tidak dapat diputar! Durasi yg diizinkan adalah {duration} menit"
         )
     return path.join("downloads", f"{info['id']}.{info['ext']}")
