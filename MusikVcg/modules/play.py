@@ -598,7 +598,7 @@ async def play(_, message: Message):
                     InlineKeyboardButton("ᴘ ʟ ᴀ ʏ ʟ ɪ ꜱ ᴛ", callback_data="playlist"),
                     InlineKeyboardButton("ᴏ ᴡ ɴ ᴇ ʀ", callback_data="menu"),
                 ],
-                [InlineKeyboardButton(text="ᴊ ᴏ ɪ ɴ  ɢ ᴄ", url=f"https://t.me/infble")],
+                [InlineKeyboardButton(text="ᴊ ᴏ ɪ ɴ  ɢ ᴄ", url=f"https://t.me/ChatBotXanon")],
                 [InlineKeyboardButton(text="❌ ᴛ ᴜ ᴛ ᴜ ᴘ", callback_data="cls")],
             ]
         )
@@ -678,7 +678,7 @@ async def play(_, message: Message):
                         InlineKeyboardButton("ᴘ ʟ ᴀ ʏ ʟ ɪ ꜱ ᴛ", callback_data="playlist"),
                         InlineKeyboardButton("ᴏ ᴡ ɴ ᴇ ʀ", url="https://t.me/OWNER_MUSICVCG/3"),
                     ],
-                    [InlineKeyboardButton(text="ᴊ ᴏ ɪ ɴ  ɢ ᴄ", url="https://t.me/infble"),
+                    [InlineKeyboardButton(text="ᴊ ᴏ ɪ ɴ  ɢ ᴄ", url="https://t.me/ChatBotXanon"),
                     ],
                     [InlineKeyboardButton(text="❌ ᴛ ᴜ ᴛ ᴜ ᴘ", callback_data="cls")],
                 ]
@@ -824,7 +824,7 @@ async def ytplay(_, message: Message):
                 InlineKeyboardButton("ᴘ ʟ ᴀ ʏ ʟ ɪ ꜱ ᴛ", callback_data="playlist"),
                 InlineKeyboardButton("ᴏ ᴡ ɴ ᴇ ʀ", url="https://t.me/OWNER_MUSICVCG/3"),
             ],
-            [InlineKeyboardButton(text="ᴊ ᴏ ɪ ɴ  ɢ ᴄ", url="https://t.me/infble"),
+            [InlineKeyboardButton(text="ᴊ ᴏ ɪ ɴ  ɢ ᴄ", url="https://t.me/ChatBotXanon"),
             ],
             [InlineKeyboardButton(text="❌ ᴛ ᴜ ᴛ ᴜ ᴘ", callback_data="cls")],
         ]
@@ -966,7 +966,7 @@ async def jiosaavn(client: Client, message_: Message):
             ],
             [
                 InlineKeyboardButton(
-                    text="ᴊ ᴏ ɪ ɴ  ɢ ᴄ", url="https://t.me/infble"
+                    text="ᴊ ᴏ ɪ ɴ  ɢ ᴄ", url="https://t.me/ChatBotXanon"
                 )
             ],
             [InlineKeyboardButton(text="❌ ᴛ ᴜ ᴛ ᴜ ᴘ", callback_data="cls")],
@@ -1070,7 +1070,7 @@ async def lol_cb(b, cb):
                 InlineKeyboardButton("ᴘ ʟ ᴀ ʏ ʟ ɪ ꜱ ᴛ", callback_data="playlist"),
                 InlineKeyboardButton("ᴏ ᴡ ɴ ᴇ ʀ", url="https://t.me/OWNER_MUSICVCG/3"),
             ],
-            [InlineKeyboardButton(text="ᴊ ᴏ ɪ ɴ  ɢ ᴄ", url="https://t.me/infble")],
+            [InlineKeyboardButton(text="ᴊ ᴏ ɪ ɴ  ɢ ᴄ", url="https://t.me/ChatBotXanon")],
             [InlineKeyboardButton(text="❌ ᴛ ᴜ ᴛ ᴜ ᴘ", callback_data="cls")],
         ]
     )
