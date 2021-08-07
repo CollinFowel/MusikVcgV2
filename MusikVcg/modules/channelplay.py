@@ -455,7 +455,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton("Daftar Playlist", callback_data="cplaylist"),
-                    InlineKeyboardButton("Group", url="https://t.me/infble"),
+                    InlineKeyboardButton("Group", url="https://t.me/ChatBotXanon"),
                 ],
                 [InlineKeyboardButton(text="❌ Tutup", callback_data="ccls")],
             ]
@@ -502,7 +502,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton("Daftar Playlist", callback_data="cplaylist"),
-                    InlineKeyboardButton("Group", url="https://t.me/infble"),
+                    InlineKeyboardButton("Group", url="https://t.me/ChatBotXanon"),
                 ],
                 [
                     InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
@@ -547,7 +547,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton("Daftar Playlist", callback_data="cplaylist"),
-                    InlineKeyboardButton("Group", url="https://t.me/infble"),
+                    InlineKeyboardButton("Group", url="https://t.me/ChatBotXanon"),
                 ],
                 [
                     InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
@@ -685,7 +685,7 @@ async def deezer(client: Client, message_: Message):
         [
             [
                 InlineKeyboardButton("Daftar Playlist", callback_data="cplaylist"),
-                InlineKeyboardButton("Group", url="https://t.me/infble"),
+                InlineKeyboardButton("Group", url="https://t.me/ChatBotXanon"),
             ],
             [InlineKeyboardButton(text="Owner", url="https://t.me/CollinFowel")],
             [InlineKeyboardButton(text="❌ Tutup", callback_data="ccls")],
@@ -816,7 +816,7 @@ async def jiosaavn(client: Client, message_: Message):
         [
             [
                 InlineKeyboardButton("Daftar Playlist", callback_data="cplaylist"),
-                InlineKeyboardButton("Group", url="https://t.me/infble"),
+                InlineKeyboardButton("Group", url="https://t.me/ChatBotXanon"),
             ],
             [
                 InlineKeyboardButton(
