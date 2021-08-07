@@ -1,18 +1,9 @@
-# Daisyxmusic (Telegram bot project)
-# Copyright (C) 2021  Inukaasith
-# Copyright (C) 2021  TheHamkerCat (Python_ARQ)
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as
-# published by the Free Software Foundation, either version 3 of the
-# License, or (at your option) any later version.
 
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU Affero General Public License for more details.
-#
-# You should have received a copy of the GNU Affero General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
+
+
+
 
 
 import json
@@ -93,7 +84,7 @@ async def playlist(client, message):
     await message.reply_text(msg)
 
 
-# ============================= Settings =========================================
+# =============================  =========================================
 
 
 def updated_stats(chat, queue, vol=100):
@@ -357,6 +348,7 @@ async def m_cb(b, cb):
             await cb.message.edit("Berhasil keluar dari Group!")
         else:
             await cb.answer("Assistant sedang tidak terhubung dengan obrolan suara/vcg!", show_alert=True)
+
 
 
 @Client.on_message(filters.command(["channelplay","cplay"])  & filters.group & ~filters.edited)
