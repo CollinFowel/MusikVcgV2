@@ -16,7 +16,7 @@
 
 from pyrogram import Client
 import asyncio
-from MusikVcg.config import SUDO_USERS, PMPERMIT
+from MusikVcg.config import SUDO_USERS, PMPERMIT, PMMSG
 from pyrogram import filters
 from pyrogram.types import Message
 from MusikVcg.services.callsmusic.callsmusic import client as USER
@@ -31,12 +31,14 @@ async def pmPermit(client: USER, message: Message):
             chat_id = message.chat.id
             if chat_id in pchats:
                 return
-            await USER.send_message(
-                message.chat.id,
-                "Hai 👋 \n\n✨ Saya bot musik yang dibuat untuk memutar musik di obrolan suara Grup & Channel Telegram.\n\n⚡ Bot ini memiliki fitur : \n ㅤ• Memutar musik di obrolan suara.\n ㅤ• Mendownload lagu.\n ㅤ• Mendownload video.\n\n ❖ Managed by : [Collin](https://t.me/CollinFowel) \n ㅤ",
-            )
-            return
-
+            try:
+              await USER.send_message(
+                  message.chat.id,
+                  PMMSG
+              )
+              return
+            except:
+              return
     
 
 @Client.on_message(filters.command(["/pmpermit"]))
@@ -80,4 +82,4 @@ async def rmpmPermiat(client: USER, message: Message):
         pchats.remove(chat_id)
         await message.reply_text("Anda tidak diizinkan melakukan chat")
         return
-    message.continue_propagation()
+    message.continue_propagation()    

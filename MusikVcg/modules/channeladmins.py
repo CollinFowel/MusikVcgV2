@@ -1,5 +1,7 @@
 # Calls Music 1 - Telegram bot for streaming audio in group calls
 # Copyright (C) 2021  Roj Serbest
+# Copyright (C) 2021  InukaAsith & Technical-Hunter (Optimized for channel play)
+
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -40,12 +42,10 @@ async def pause(_, message: Message):
       await message.reply("Is chat even linked")
       return    
     chat_id = chid
-    if (chat_id not in callsmusic.pytgcalls.active_calls) or (
-        callsmusic.pytgcalls.active_calls[chat_id] == "paused"
-    ):
+    if chat_id in callsmusic.pytgcalls.active_calls:
         await message.reply_text("❗ Tidak ada lagu yang sedang diputar!")
     else:
-        callsmusic.pytgcalls.pause_stream(chat_id)
+        await callsmusic.pytgcalls.pause_stream(chat_id)
         await message.reply_text("▶️ Lagu dijeda!")
 
 
@@ -61,12 +61,10 @@ async def resume(_, message: Message):
       await message.reply("Is chat even linked")
       return    
     chat_id = chid
-    if (chat_id not in callsmusic.pytgcalls.active_calls) or (
-        callsmusic.pytgcalls.active_calls[chat_id] == "playing"
-    ):
+    if chat_id in callsmusic.pytgcalls.active_calls:
         await message.reply_text("❗ Tidak ada lagu yang sedang dijeda!")
     else:
-        callsmusic.pytgcalls.resume_stream(chat_id)
+        await callsmusic.pytgcalls.resume_stream(chat_id)
         await message.reply_text("⏸ Lagu tidak lagi dijeda!")
 
 
@@ -82,7 +80,7 @@ async def stop(_, message: Message):
       await message.reply("Is chat even linked")
       return    
     chat_id = chid
-    if chat_id not in callsmusic.pytgcalls.active_calls:
+    if chat_id in callsmusic.pytgcalls.active_calls:
         await message.reply_text("❗ Tidak ada lagu yang sedang didengarkan!")
     else:
         try:
@@ -90,7 +88,7 @@ async def stop(_, message: Message):
         except QueueEmpty:
             pass
 
-        callsmusic.pytgcalls.leave_group_call(chat_id)
+        await callsmusic.pytgcalls.leave_group_call(chat_id)
         await message.reply_text("❌ Memberhentikan lagu!")
 
 
@@ -107,15 +105,15 @@ async def skip(_, message: Message):
       await message.reply("Is chat even linked")
       return    
     chat_id = chid
-    if chat_id not in callsmusic.pytgcalls.active_calls:
+    if chat_id in callsmusic.pytgcalls.active_calls:
         await message.reply_text("❗ Tidak ada lagu yang sedang diputar untuk diskip!")
     else:
         queues.task_done(chat_id)
 
         if queues.is_empty(chat_id):
-            callsmusic.pytgcalls.leave_group_call(chat_id)
+            await callsmusic.pytgcalls.leave_group_call(chat_id)
         else:
-            callsmusic.pytgcalls.change_stream(
+            await callsmusic.pytgcalls.change_stream(
                 chat_id, queues.get(chat_id)["file"]
             )
 

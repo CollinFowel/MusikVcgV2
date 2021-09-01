@@ -1,5 +1,8 @@
 # Daisyxmusic (Telegram bot project )
-# Copyright (C) 2021  Inukaasith
+
+# Copyright (C) 2021  Bemro-Official 
+# Copyright (C) 2021  Inukaasith (Modified)
+# Copyright (C) 2021  Technical-Hunter (Modified)
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -16,11 +19,9 @@
 
 import os
 from MusikVcg.config import SOURCE_CODE,ASSISTANT_NAME,PROJECT_NAME,SUPPORT_GROUP,UPDATES_CHANNEL
+
 class Messages():
-      START_MSG = "**Hello 👋 [{}](tg://user?id={})!**\n\n🤖 Saya bot musik yang dibuat untuk memutar musik di obrolan suara Grup & Channel Telegram.\n\n✅ Ketik /help bila butuh bantuan."
-      HELP_MSG = [
-        ".",
-f"""
+      START_MSG = """
 **Hei 👋 Selamat datang di {PROJECT_NAME}
 
 ⚡ {PROJECT_NAME} dapat memutar musik di obrolan suara Grup dan obrolan suara Channel Anda

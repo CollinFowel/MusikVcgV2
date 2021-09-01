@@ -20,6 +20,7 @@ from pyrogram.errors import UserAlreadyParticipant
 import asyncio
 from MusikVcg.helpers.decorators import authorized_users_only, errors
 from MusikVcg.services.callsmusic.callsmusic import client as USER
+from MusikVcg.config import ASSISTANT_NAME
 from MusikVcg.config import SUDO_USERS
 
 @Client.on_message(filters.command(["userbotjoin"]) & ~filters.private & ~filters.bot)
@@ -50,8 +51,8 @@ async def addchannel(client, message):
     except Exception as e:
         print(e)
         await message.reply_text(
-            f"<b> Flood Wait Error \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
-            "\n\nAtau tambahkan Assistant Bot secara manual ke Grup Anda dan coba lagi</b>",
+            f"Flood Wait Error \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
+            "\n\nAtau tambahkan @{ASSISTANT_NAME} Bot secara manual ke Grup Anda dan coba lagi</b>",
         )
         return
     await message.reply_text(
@@ -125,11 +126,10 @@ async def addcchannel(client, message):
     except Exception as e:
         print(e)
         await message.reply_text(
-            f"<b> Flood Wait Error \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
-            "\n\nAtau tambahkan Assistant Bot secara manual ke Grup Anda dan coba lagi</b>",
+            f"<b> Flood Wait Error \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
+            "\n\nAtau tambahkan @{ASSISTANT_NAME} Bot secara manual ke Grup Anda dan coba lagi</b>",
         )
         return
     await message.reply_text(
         "<b>Assistant bot berhasil bergabung di Group Anda</b>",
     )
-    

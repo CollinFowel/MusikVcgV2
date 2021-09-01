@@ -1,9 +1,18 @@
+# Daisyxmusic (Telegram bot project)
+# Copyright (C) 2021  Inukaasith
+# Copyright (C) 2021  Technical-Hunter
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
 
-
-
-
-
-
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
 import json
@@ -23,17 +32,18 @@ from pyrogram.types import Voice
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from Python_ARQ import ARQ
 from youtube_search import YoutubeSearch
-from MusikVcg.modules.play import generate_cover
-from MusikVcg.modules.play import arq
-from MusikVcg.modules.play import cb_admin_check
-from MusikVcg.modules.play import transcode
-from MusikVcg.modules.play import convert_seconds
-from MusikVcg.modules.play import time_to_seconds
-from MusikVcg.modules.play import changeImageSize
+from MusikVcg.modules.play import (
+        generate_cover, 
+        arq, 
+        cb_admin_check,
+        transcode, 
+        convert_seconds, 
+        time_to_seconds, 
+        changeImageSize
+    )
 from MusikVcg.config import BOT_NAME as bn
-from MusikVcg.config import DURATION_LIMIT
+from MusikVcg.config import DURATION_LIMIT, que
 from MusikVcg.config import UPDATES_CHANNEL as updateschannel
-from MusikVcg.config import que
 from MusikVcg.function.admins import admins as a
 from MusikVcg.helpers.errors import DurationLimitError
 from MusikVcg.helpers.decorators import errors
@@ -48,8 +58,8 @@ from MusikVcg.services.converter.converter import convert
 from MusikVcg.services.downloaders import youtube
 from MusikVcg.services.queues import queues
 
-chat_id = None
 
+chat_id = None
 
 
 @Client.on_message(filters.command(["channelplaylist","cplaylist"]) & filters.group & ~filters.edited)
@@ -84,7 +94,7 @@ async def playlist(client, message):
     await message.reply_text(msg)
 
 
-# =============================  =========================================
+# ============================= Settings =========================================
 
 
 def updated_stats(chat, queue, vol=100):
@@ -118,7 +128,9 @@ def r_ply(type_):
             [
                 InlineKeyboardButton("Daftar Playlist", "cplaylist"),
             ],
-            [InlineKeyboardButton("❌ Tutup", "ccls")],
+            [
+                InlineKeyboardButton("❌ Tutup", "ccls")
+            ]
         ]
     )
     return mar
@@ -229,25 +241,20 @@ async def m_cb(b, cb):
 
     the_data = cb.message.reply_markup.inline_keyboard[1][0].callback_data
     if type_ == "cpause":
-        if (chet_id not in callsmusic.pytgcalls.active_calls) or (
-            callsmusic.pytgcalls.active_calls[chet_id] == "paused"
-        ):
+        if chet_id in callsmusic.pytgcalls.active_calls:
             await cb.answer("Assistant sedang tidak terhubung dengan obrolan suara/vcg", show_alert=True)
         else:
-            callsmusic.pytgcalls.pause_stream(chet_id)
-
+            await callsmusic.pytgcalls.pause_stream(chet_id)
             await cb.answer("Lagu dijeda!")
             await cb.message.edit(
                 updated_stats(conv, qeue), reply_markup=r_ply("play")
             )
 
     elif type_ == "cplay":
-        if (chet_id not in callsmusic.pytgcalls.active_calls) or (
-            callsmusic.pytgcalls.active_calls[chet_id] == "playing"
-        ):
+        if chet_id in callsmusic.pytgcalls.active_calls:
             await cb.answer("Assistant sedang tidak terhubung dengan obrolan suara/vcg", show_alert=True)
         else:
-            callsmusic.pytgcalls.resume_stream(chet_id)
+            await callsmusic.pytgcalls.resume_stream(chet_id)
             await cb.answer("Lagu tidak lagi dijeda!")
             await cb.message.edit(
                 updated_stats(conv, qeue), reply_markup=r_ply("pause")
@@ -277,21 +284,16 @@ async def m_cb(b, cb):
         await cb.message.edit(msg)
 
     elif type_ == "cresume":
-        if (chet_id not in callsmusic.pytgcalls.active_calls) or (
-            callsmusic.pytgcalls.active_calls[chet_id] == "playing"
-        ):
+        if chet_id in callsmusic.pytgcalls.active_calls:
             await cb.answer("Obrolan tidak terhubung atau sudah dimainkan", show_alert=True)
         else:
-            callsmusic.pytgcalls.resume_stream(chet_id)
+            await callsmusic.pytgcalls.resume_stream(chet_id)
             await cb.answer("Lagu tidak lagi dijeda!")
     elif type_ == "cpuse":
-        if (chet_id not in callsmusic.pytgcalls.active_calls) or (
-            callsmusic.pytgcalls.active_calls[chet_id] == "paused"
-        ):
+        if chet_id in callsmusic.pytgcalls.active_calls:
             await cb.answer("Obrolan tidak terhubung atau sudah dijeda", show_alert=True)
         else:
-            callsmusic.pytgcalls.pause_stream(chet_id)
-
+            await callsmusic.pytgcalls.pause_stream(chet_id)
             await cb.answer("Lagu dijeda!")
     elif type_ == "ccls":
         await cb.answer("Closed menu")
@@ -311,25 +313,26 @@ async def m_cb(b, cb):
                 [
                     InlineKeyboardButton("Daftar Playlist", "cplaylist"),
                 ],
-                [InlineKeyboardButton("❌ Tutup", "ccls")],
+                [
+                    InlineKeyboardButton("❌ Tutup", "ccls")
+                ]
             ]
         )
         await cb.message.edit(stats, reply_markup=marr)
     elif type_ == "cskip":
         if qeue:
             qeue.pop(0)
-        if chet_id not in callsmusic.pytgcalls.active_calls:
+        if chet_id in callsmusic.pytgcalls.active_calls:
             await cb.answer("Assistant sedang tidak terhubung dengan obrolan suara/vcg!", show_alert=True)
         else:
-            callsmusic.queues.task_done(chet_id)
+            queues.task_done(chet_id)
 
-            if callsmusic.queues.is_empty(chet_id):
-                callsmusic.pytgcalls.leave_group_call(chet_id)
-
+            if queues.is_empty(chet_id):
+                await callsmusic.pytgcalls.leave_group_call(chet_id)
                 await cb.message.edit("- Tidak ada lagi daftar putar...\n- Meninggalkan obrolan suara/vcg!")
             else:
-                callsmusic.pytgcalls.change_stream(
-                    chet_id, callsmusic.queues.get(chet_id)["file"]
+                await callsmusic.pytgcalls.change_stream(
+                    chet_id, queues.get(chet_id)["file"]
                 )
                 await cb.answer("Skipped")
                 await cb.message.edit((m_chat, qeue), reply_markup=r_ply(the_data))
@@ -340,15 +343,13 @@ async def m_cb(b, cb):
     else:
         if chet_id in callsmusic.pytgcalls.active_calls:
             try:
-                callsmusic.queues.clear(chet_id)
+                queues.clear(chet_id)
             except QueueEmpty:
                 pass
-
-            callsmusic.pytgcalls.leave_group_call(chet_id)
+            await callsmusic.pytgcalls.leave_group_call(chet_id)
             await cb.message.edit("Berhasil keluar dari Group!")
         else:
             await cb.answer("Assistant sedang tidak terhubung dengan obrolan suara/vcg!", show_alert=True)
-
 
 
 @Client.on_message(filters.command(["channelplay","cplay"])  & filters.group & ~filters.edited)
@@ -372,7 +373,7 @@ async def play(_, message: Message):
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "helper"
+        user.first_name = "MusikVcg"
     usar = user
     wew = usar.id
     try:
@@ -420,7 +421,7 @@ async def play(_, message: Message):
     message.from_user.id
     text_links = None
     message.from_user.first_name
-    await lel.edit("🔍 <b>Mencari lagu</b>")
+    await lel.edit("🔎 <b>Mencari lagu</b>")
     message.from_user.id
     user_id = message.from_user.id
     message.from_user.first_name
@@ -440,7 +441,7 @@ async def play(_, message: Message):
     else:
         urls=None
     if text_links:
-        urls = True    
+        urls = True
     audio = (
         (message.reply_to_message.audio or message.reply_to_message.voice)
         if message.reply_to_message
@@ -457,7 +458,9 @@ async def play(_, message: Message):
                     InlineKeyboardButton("Daftar Playlist", callback_data="cplaylist"),
                     InlineKeyboardButton("Group", url="https://t.me/ChatBotXanon"),
                 ],
-                [InlineKeyboardButton(text="❌ Tutup", callback_data="ccls")],
+                [
+                    InlineKeyboardButton(text="❌ Tutup", callback_data="ccls")
+                ],
             ]
         )
         file_name = get_file_name(audio)
@@ -476,7 +479,7 @@ async def play(_, message: Message):
     elif urls:
         query = toxt
         await lel.edit("🎶 **Memproses lagu yang diminta**")
-        ydl_opts = {"format": "bestaudio[ext=m4a]"}
+        ydl_opts = {"format": "bestaudio/best"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
             url = f"https://youtube.com{results[0]['url_suffix']}"
@@ -508,7 +511,9 @@ async def play(_, message: Message):
                     InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
                     InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
                 ],
-                [InlineKeyboardButton(text="❌ Tutup", callback_data="ccls")],
+                [
+                    InlineKeyboardButton(text="❌ Close", callback_data="ccls")
+                ]
             ]
         )
         requested_by = message.from_user.first_name
@@ -520,7 +525,7 @@ async def play(_, message: Message):
             query += " " + str(i)
         print(query)
         await lel.edit("🎶 **Memproses lagu yang diminta**")
-        ydl_opts = {"format": "bestaudio[ext=m4a]"}
+        ydl_opts = {"format": "bestaudio/best"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
             url = f"https://youtube.com{results[0]['url_suffix']}"
@@ -553,7 +558,9 @@ async def play(_, message: Message):
                     InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
                     InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
                 ],
-                [InlineKeyboardButton(text="❌ Tutup", callback_data="ccls")],
+                [   
+                    InlineKeyboardButton(text="❌ Tutup", callback_data="ccls")
+                ],
             ]
         )
         requested_by = message.from_user.first_name
@@ -584,7 +591,7 @@ async def play(_, message: Message):
         loc = file_path
         appendable = [s_name, r_by, loc]
         qeue.append(appendable)
-        callsmusic.pytgcalls.join_group_call(chat_id, file_path)
+        await callsmusic.pytgcalls.join_group_call(chat_id, file_path)
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
@@ -596,12 +603,11 @@ async def play(_, message: Message):
         return await lel.delete()
 
 
-@Client.on_message(filters.command(["channeldplay","cdplay"]) & filters.group & ~filters.edited)
+@Client.on_message(filters.command(["channelsplay","csplay"]) & filters.group & ~filters.edited)
 @authorized_users_only
-async def deezer(client: Client, message_: Message):
+async def jiosaavn(client: Client, message_: Message):
     global que
     lel = await message_.reply("🔄 <b>Mohon tunggu sebentar</b>")
-
     try:
       conchat = await client.get_chat(message_.chat.id)
       conid = conchat.linked_chat.id
@@ -609,137 +615,6 @@ async def deezer(client: Client, message_: Message):
       chid = conid
     except:
       await message_.reply("Silahkan hidupkan obrolan suara/vcg nya! Pastikan Channel sudah ditautkan dengan grup!")
-      return
-    try:
-      administrators = await get_administrators(conv)
-    except:
-      await message.reply("Am I admin of Channel") 
-    try:
-        user = await USER.get_me()
-    except:
-        user.first_name = "MusikVcg"
-    usar = user
-    wew = usar.id
-    try:
-        # chatdetails = await USER.get_chat(chid)
-        await client.get_chat_member(chid, wew)
-    except:
-        for administrator in administrators:
-            if administrator == message_.from_user.id:
-                if message_.chat.title.startswith("Channel Music: "):
-                    await lel.edit(
-                        "<b>Jangan lupa untuk menambahkan Assistant bot ke Channel Anda</b>",
-                    )
-                    pass
-                try:
-                    invitelink = await client.export_chat_invite_link(chid)
-                except:
-                    await lel.edit(
-                        "<b>Tambahkan Saya sebagai admin grup Anda terlebih dahulu</b>",
-                    )
-                    return
-
-                try:
-                    await USER.join_chat(invitelink)
-                    await lel.edit(
-                        "<b>Assistant bot berhasil bergabung di Group Anda</b>",
-                    )
-
-                except UserAlreadyParticipant:
-                    pass
-                except Exception:
-                    # print(e)
-                    await lel.edit(
-                        f"<b>❗️ Flood Wait Error ❗️ \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
-                        "\n\nAtau tambahkan Assistant Bot secara manual ke Grup Anda dan coba lagi</b>",
-                    )
-    try:
-        await USER.get_chat(chid)
-        # lmoa = await client.get_chat_member(chid,wew)
-    except:
-        await lel.edit(
-            f"<i> {user.first_name} Assistant Bot terkena banned dari Grup ini, Minta admin untuk unbanned assistant bot lalu tambahkan {user.first_name} Assistant Bot secara manual</i>"
-        )
-        return
-    requested_by = message_.from_user.first_name
-
-    text = message_.text.split(" ", 1)
-    queryy = text[1]
-    query=queryy
-    res = lel
-    await res.edit(f"Mencari lagu untuk `{queryy}` dari deezer")
-    try:
-        songs = await arq.deezer(query,1)
-        if not songs.ok:
-            await message_.reply_text(songs.result)
-            return
-        title = songs.result[0].title
-        url = songs.result[0].url
-        artist = songs.result[0].artist
-        duration = songs.result[0].duration
-        thumbnail = songs.result[0].thumbnail
-    except:
-        await res.edit("Tidak ada lagu yang ditemukan!")
-        return
-    keyboard = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton("Daftar Playlist", callback_data="cplaylist"),
-                InlineKeyboardButton("Group", url="https://t.me/ChatBotXanon"),
-            ],
-            [InlineKeyboardButton(text="Owner", url="https://t.me/CollinFowel")],
-            [InlineKeyboardButton(text="❌ Tutup", callback_data="ccls")],
-        ]
-    )
-    file_path = await convert(wget.download(url))
-    await res.edit("Generating Thumbnail")
-    await generate_cover(requested_by, title, artist, duration, thumbnail)
-    chat_id = chid
-    if chat_id in callsmusic.pytgcalls.active_calls:
-        await res.edit("adding in queue")
-        position = await queues.put(chat_id, file=file_path)
-        qeue = que.get(chat_id)
-        s_name = title
-        r_by = message_.from_user
-        loc = file_path
-        appendable = [s_name, r_by, loc]
-        qeue.append(appendable)
-        await res.edit_text(f"🎵 **Lagu yang Anda minta dalam antrian diposisi** {position}")
-    else:
-        await res.edit_text(f"🎵 Playing....")
-
-        que[chat_id] = []
-        qeue = que.get(chat_id)
-        s_name = title
-        r_by = message_.from_user
-        loc = file_path
-        appendable = [s_name, r_by, loc]
-        qeue.append(appendable)
-        callsmusic.pytgcalls.join_group_call(chat_id, file_path)
-
-    await res.delete()
-
-    m = await client.send_photo(
-        chat_id=message_.chat.id,
-        reply_markup=keyboard,
-        photo="final.png",
-        caption=f"🎵 **Sedang memutar lagu** [{title}]({url}) Via Deezer di Channel Grup",
-    )
-    os.remove("final.png")
-
-
-@Client.on_message(filters.command(["channelsplay","csplay"]) & filters.group & ~filters.edited)
-@authorized_users_only
-async def jiosaavn(client: Client, message_: Message):
-    global que
-    lel = await message_.reply("🔄 **Mohon tunggu sebentar**")
-    try:
-      conchat = await client.get_chat(message_.chat.id)
-      conid = conchat.linked_chat.id
-      conv = conchat.linked_chat
-      chid = conid
-    except:
-      await message_.reply("Silahkan hidupkan obrolan suara/vcg nya! Pastikan Channel sudah ditautkan dengan grup")
       return
     try:
       administrators = await get_administrators(conv)
@@ -797,7 +672,28 @@ async def jiosaavn(client: Client, message_: Message):
     text = message_.text.split(" ", 1)
     query = text[1]
     res = lel
-    await res.edit(f"Mencari lagu untuk`{query}` dari jio saavn")
+    await res.edit(f"Searching 🔍 for `{query}` on jio saavn")
+ 
+    # ======= Copied from https://github.com/TheHamkerCat/WilliamButcherBot/blob/dev/wbb/modules/music.py ==========
+    """
+    MIT License
+    Copyright (c) 2021 TheHamkerCat
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+    """    
     try:
         songs = await arq.saavn(query)
         if not songs.ok:
@@ -808,6 +704,9 @@ async def jiosaavn(client: Client, message_: Message):
         ssingers = songs.result[0].singers
         sthumb = "https://telegra.ph/file/f6086f8909fbfeb0844f2.png"
         sduration = int(songs.result[0].duration)
+
+# ==========================================================================================================================        
+        
     except Exception as e:
         await res.edit("Tidak ada lagu yang ditemukan!")
         print(str(e))
@@ -815,15 +714,11 @@ async def jiosaavn(client: Client, message_: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("Daftar Playlist", callback_data="cplaylist"),
-                InlineKeyboardButton("Group", url="https://t.me/ChatBotXanon"),
+                InlineKeyboardButton("ᴘ ʟ ᴀ ʏ ʟ ɪ ꜱ ᴛ", callback_data="cplaylist"),
+                InlineKeyboardButton("ᴊ ᴏ ɪ ɴ  ɢ ᴄ", url="https://t.me/ChatBotXanon"),
             ],
-            [
-                InlineKeyboardButton(
-                    text="Owner", url="https://t.me/CollinFowel"
-                )
-            ],
-            [InlineKeyboardButton(text="❌ Tutup", callback_data="ccls")],
+            [InlineKeyboardButton(text="ᴏ ᴡ ɴ ᴇ ʀ", url="https://t.me/xxstanme")],
+            [InlineKeyboardButton(text="❌ ᴛ ᴜ ᴛ ᴜ ᴘ", callback_data="ccls")],
         ]
     )
     file_path = await convert(wget.download(slink))
@@ -841,11 +736,11 @@ async def jiosaavn(client: Client, message_: Message):
             chat_id=message_.chat.id,
             reply_markup=keyboard,
             photo="final.png",
-            caption=f"🎵 **Lagu yang Anda minta dalam antrian diposisi** {position}",
+            caption=f"🎵 **Lagu yang Anda minta dalam antrian diposisi** {position}")
         )
 
     else:
-        await res.edit_text(f"🎵 Playing.....")
+        await res.edit_text(f"🎵 Playing....")
         que[chat_id] = []
         qeue = que.get(chat_id)
         s_name = sname
@@ -853,7 +748,7 @@ async def jiosaavn(client: Client, message_: Message):
         loc = file_path
         appendable = [s_name, r_by, loc]
         qeue.append(appendable)
-        callsmusic.pytgcalls.join_group_call(chat_id, file_path)
+        await callsmusic.pytgcalls.join_group_call(chat_id, file_path)
     await res.edit("Generating Thumbnail.")
     await generate_cover(requested_by, sname, ssingers, sduration, sthumb)
     await res.delete()
@@ -864,6 +759,3 @@ async def jiosaavn(client: Client, message_: Message):
         caption=f"🎵 **Sedang memutar lagu** {sname} Via Jiosaavn di Channel Group",
     )
     os.remove("final.png")
-
-
-# Have u read all. If read RESPECT :-)

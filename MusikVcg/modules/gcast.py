@@ -25,7 +25,7 @@ async def bye(client, message):
     sent=0
     failed=0
     if message.from_user.id in SUDO_USERS:
-        lol = await message.reply("`Starting a broadcast...`")
+        lol = await message.reply("Starting a broadcast...`")
         if not message.reply_to_message:
             await lol.edit("Silahkan reply ke pesan yg mau di gcast!")
             return
