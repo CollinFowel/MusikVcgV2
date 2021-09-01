@@ -22,7 +22,7 @@ def _start(client, message):
                     InlineKeyboardButton(
                         "📲 Group", url=f"https://t.me/ChatBotXanon"), 
                     InlineKeyboardButton(
-                        "👤 Owner", url=f"https://t.me/CollinFowel")
+                        "👤 Owner", url=f"https://t.me/xxstanme")
                 ],[
                     InlineKeyboardButton(
                         "💬 Tanya tanya klik disini", url=f"https://t.me/CollinFowel")
@@ -35,12 +35,12 @@ def _start(client, message):
 @Client.on_message(filters.command("start") & ~filters.private & ~filters.channel)
 async def gstart(_, message: Message):
     await message.reply_text(
-        f"""**☇{PROJECT_NAME} Telah Aktif☇""",
+        f"""☇**{PROJECT_NAME} Telah Aktif**☇""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "💬 Tanya tanya klik disini", url=f"https://t.me/CollinFowel"
+                        "💬 Tanya tanya klik disini", url=f"https://t.me/xxstanme"
                     )
                 ]
             ]
@@ -82,7 +82,7 @@ def map(pos):
         button = [
             [InlineKeyboardButton("➕ Tambahkan Saya Ke Grup ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
             [InlineKeyboardButton(text = '📲 Group', url=f"https://t.me/ChatBotXanon"),
-             InlineKeyboardButton(text = '👤 Owner', url=f"https://t.me/CollinFowel")],
+             InlineKeyboardButton(text = '👤 Owner', url=f"https://t.me/xxstanme")],
             [InlineKeyboardButton(text = '💬 Tanya tanya klik disini', url=f"https://t.me/CollinFowel")],
             [InlineKeyboardButton(text = '◀️', callback_data = f"help+{pos-1}")]
         ]
