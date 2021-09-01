@@ -676,7 +676,7 @@ async def play(_, message: Message):
                 [
                     [
                         InlineKeyboardButton("ᴘ ʟ ᴀ ʏ ʟ ɪ ꜱ ᴛ", callback_data="playlist"),
-                        InlineKeyboardButton("ᴏ ᴡ ɴ ᴇ ʀ", url="https://t.me/OWNER_MUSICVCG/3"),
+                        InlineKeyboardButton("ᴏ ᴡ ɴ ᴇ ʀ", url="https://t.me/xxstanme"),
                     ],
                     [InlineKeyboardButton(text="ᴊ ᴏ ɪ ɴ  ɢ ᴄ", url="https://t.me/ChatBotXanon"),
                     ],
@@ -822,7 +822,7 @@ async def ytplay(_, message: Message):
         [
             [
                 InlineKeyboardButton("ᴘ ʟ ᴀ ʏ ʟ ɪ ꜱ ᴛ", callback_data="playlist"),
-                InlineKeyboardButton("ᴏ ᴡ ɴ ᴇ ʀ", url="https://t.me/OWNER_MUSICVCG/3"),
+                InlineKeyboardButton("ᴏ ᴡ ɴ ᴇ ʀ", url="https://t.me/xxstanme"),
             ],
             [InlineKeyboardButton(text="ᴊ ᴏ ɪ ɴ  ɢ ᴄ", url="https://t.me/ChatBotXanon"),
             ],
@@ -962,7 +962,7 @@ async def jiosaavn(client: Client, message_: Message):
         [
             [
                 InlineKeyboardButton("ᴘ ʟ ᴀ ʏ ʟ ɪ ꜱ ᴛ", callback_data="playlist"),
-                InlineKeyboardButton("ᴏ ᴡ ɴ ᴇ ʀ", url="https://t.me/OWNER_MUSICVCG/3"),
+                InlineKeyboardButton("ᴏ ᴡ ɴ ᴇ ʀ", url="https://t.me/xxstanme"),
             ],
             [
                 InlineKeyboardButton(
@@ -1068,7 +1068,7 @@ async def lol_cb(b, cb):
         [
             [
                 InlineKeyboardButton("ᴘ ʟ ᴀ ʏ ʟ ɪ ꜱ ᴛ", callback_data="playlist"),
-                InlineKeyboardButton("ᴏ ᴡ ɴ ᴇ ʀ", url="https://t.me/OWNER_MUSICVCG/3"),
+                InlineKeyboardButton("ᴏ ᴡ ɴ ᴇ ʀ", url="https://t.me/xxstanme"),
             ],
             [InlineKeyboardButton(text="ᴊ ᴏ ɪ ɴ  ɢ ᴄ", url="https://t.me/ChatBotXanon")],
             [InlineKeyboardButton(text="❌ ᴛ ᴜ ᴛ ᴜ ᴘ", callback_data="cls")],
