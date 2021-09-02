@@ -1,6 +1,6 @@
-Pyrogram
-TgCrypto
-pytgcalls
+pyrogram
+tgcrypto
+pytgcalls[pyrogram]
 python-dotenv
 youtube_dl
 youtube_search_python
@@ -11,7 +11,7 @@ asyncio
 youtube_search
 search_engine_parser
 ffmpeg-python
-Pillow
+pillow
 python-arq
 future
 psutil

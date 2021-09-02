@@ -48,7 +48,7 @@
     "BG_IMAGE": {
       "description": "Isi dengan link custom background yg kalian punya wajib PNG! [ABAIKAN INI KALO TIDAK NGERTI].",
       "required": false,
-      "value": "https://telegra.ph/file/1d14d4f7ac156f4b87dd0.png"
+      "value": "https://telegra.ph/file/e5d9523a3175991bdba12.png"
     },     
     "API_ID": {
       "description": "Dapatkan App ID dari my.telegram.org/apps",
@@ -70,7 +70,7 @@
     "DURATION_LIMIT": {
       "description": "Masukan batas durasi audio yg kalian inginkan (menit).",
       "required": true,
-      "value": "10"
+      "value": "90"
     }
   }
 }

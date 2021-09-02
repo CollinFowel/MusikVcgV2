@@ -2,22 +2,21 @@
   <img src="./etc/logo_readme.jpg" alt="MusikVCG logo">
 </p>
 <h1 align="center">
-  <b>MusikVCG Telegram Userbot</b>
+  <b>MusikVCG V5</b>
 </h1>
 
-### A bot that can play music on Telegram Group and Channel Voice Chats
-#### POWERED BY [PYTGCALLS](https://github.com/pytgcalls/pytgcalls)
-### Available on telegram as [@SNFMusicBot](https://t.me/SNFMusicBot)
+#### BOT INI SUDAH DIMODIFIKASI KE BAHASA INDONESIA
+### Bot musik yang di buat untuk memainkan musik di grup & channel telegram
+### Contoh bot yg sudah jadi [@AnonMusic_Bot](https://t.me/anonmusic_bot)
 
 <h2> Features 🔥 </h2>
 
-- This bot musik player language has been edited from English to Indonesian
 - Thumbnail Support
 - Playlist Support
 - Current playback support
 - Showing track names when skipping
 - Zero downtime, Fully Stable
-- Deezer,Youtube & Saavn playback support
+- Youtube, Local & Saavn playback support
 - Settings panel
 - Control with buttons
 - Userbot auto join
@@ -26,15 +25,19 @@
 
 ## 🚀 Deployment
 
-### ⛓️ Heroku 🔫
+### 💜 Heroku/Railway ⛓️🔫
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/CollinFowel/MusikVcgV2/tree/master)
+• Silahkan pilih mau deploy via apa, kalo ga ngerti bisa tanya [@xxstanme](https://t.me/xxstanme) di telegram
 
-Klik tombol dibawah untuk mengambil Pyrogram String Session
+[![Deploy+on+Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/CollinFowel/MusikVcgV2/tree/master)
 
-<a href="https://replit.com/@CollinFowel/StringSessionPyrogram#main.py"><img src="https://img.shields.io/badge/run-string__session.py-blue?style=for-the-badge&logo=repl.it" alt="generate_string" /></a>
+[![Deploy+on+Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/CollinFowel/MusikVcgV2&envs=SESSION_NAME,BOT_TOKEN,BOT_USERNAME,BOT_NAME,PROJECT_NAME,ARQ_API_KEY,ASSISTANT_NAME,BG_IMAGE,API_ID,API_HASH,SUDO_USERS,DURATION_LIMIT)
 
-### 💻 Self-hosting (For Devs) 
+• Klik tombol dibawah untuk mengambil `Pyrogram String Session` :
+
+[![Run on Repl.it](https://repl.it/badge/github/SpEcHiDe/GenerateStringSession)](https://repl.it/@CollinFowel/StringSessionPyrogram#main.py)
+
+### ⚔ Self-hosting (For Devs) 
 ```sh
 # Install Git First (apt-instll git)
 $ git clone https://github.com/CollinFowel/MusikVcgV2
@@ -42,103 +45,120 @@ $ cd MusikVcg
 # Upgrade sources
 # Install All Requirements 
 $ pip3 install -r requirements.txt
-# Fork This Repo and fill local.env and config.py both with your own values.Then Start The Bot
+# Rename example.env to local.env and fill
+$ npm i -g npm
+# Start Bot 
 $ python3 -m MusikVcg
 ```
 
-### Commands for Group 🛠
-#### For all in group
+[Klik Disini untuk melihat tutorial hosting MusikVcg di VPS](https://youtu.be/MdavNbazT7Q)
 
-- `/play <song name>` - play song you requested
-- `/play <reply to audio>` - play replied file
-- `/dplay <song name>` - play song you requested via deezer
-- `/splay <song name>` - play song you requested via jio saavn
-- `/ytplay <song name>`: Directly play song via Youtube Music
-- `/playlist` - Show now playing list
-- `/current` - Show now playing
-- `/song <song name>` - download songs you want quickly
-- `/search <query>` - search videos on youtube with details
-- `/deezer <song name>` - download songs you want quickly via deezer
-- `/saavn <song name>` - download songs you want quickly via saavn
-- `/video <song name>` - download videos you want quickly
+
+### Daftar Perintah Bot di Grup
+#### Perintah untuk member
+
+- `/play <judul lagu>` - Memainkan lagu yang kamu minta
+- `/play <reply ke file musik>` - Memainkan lagu dari suatu file musik
+- `/splay <judul lagu>` - Memainkan lagu via jio saavn
+- `/ytplay <judul lagu>`: Memainkan lagu lansung dari YouTube
+- `/playlist` - Melihat playlist yang dimainkan
+- `/current` - Melihat lagu yang sedang dimainkan
+- `/song <judul lagu>` - Untuk mendownload lagu
+- `/search <query>` - Untuk mencari musik/video
+- `/saavn <judul lagu>` - Untuk mendownload lagu via jio saavn
+- `/video <judul video>` - Untuk mendownload video
+
 
 #### Admins only.
-- `/player` - open music player settings panel
-- `/pause` - pause song play
-- `/resume` - resume song play
-- `/skip` - play next song
-- `/end` - stop music play
-- `/userbotjoin` - invite assistant to your chat
-- `/userbotleave` - remove assistant from your chat
-- `/admincache` - Refresh admin list
-- `/musicplayer [on/off]` - Enable/Disable Music Player
+- `/player` - Membuka pengaturan musik
+- `/pause` - Untuk jeda musik
+- `/resume` - Untuk melanjutkan musik
+- `/skip` - Untuk melewati lagu
+- `/end` - Untuk berhenti memainkan musik
+- `/userbotjoin` - Untuk undang Assistant bot
+- `/userbotleave` - Untuk menyuruh Assistant bot keluar dari Grup
+- `/reload` - Untuk update daftar admin di Grup
+- `/musicplayer [on/off]` - Untuk menyalakan/mematikan musik player
 
-### Commands for Channel Music Play 🛠
-For linked group admins only:
-- `/cplay <song name>` - play song you requested
-- `/cplay <reply to link>` - play replied youtube link
-- `/cplay <reply to audio>` - play replied file
-- `/cdplay <song name>` - play song you requested via deezer
-- `/csplay <song name>` - play song you requested via jio saavn
-- `/cplaylist` - Show now playing list
-- `/cccurrent` - Show now playing
-- `/cplayer` - open music player settings panel
-- `/cpause` - pause song play
-- `/cresume` - resume song play
-- `/cskip` - play next song
-- `/cend` - stop music play
-- `/userbotjoinchannel` - invite assistant to your chat
-* channel is also can be used instead of c
+#### Authorized users & Misc
+Untuk memberikan akses penuh bot musik kepada seseorang yang diinginkan
+- `/auth <reply to user>` - Memberikan izin akses penuh
+- `/deauth <reply to user>` - Menghapus izin akses penuh
+- `/admincache` - Untuk update daftar admin di Grup
 
-If you donlt like to play in linked channel:
- 1. Get your channel ID.
- 2. Rename your group to: Channel Music: your_channel_id
- 3. Add @SNFMusicBot as Channel admin with full perms
- 4. add helper to channel
- 5. Simply send commands in your group.
 
-### Commands for Sudo Users ⚔️
-- `/userbotleaveall` - remove assistant from all chats
-- `/gcast <reply to message>` - globally brodcast replied message to all chats
-- `/pmpermit [on/off]` - enable/disable pmpermit message
+### Daftar Perintah Bot di Channel
+Hanya untuk admin grup tertaut:
+- `/cplay <judul lagu>` - Memainkan lagu yang kamu minta
+- `/cplay <reply ke link>` - Memainkan lagu yang kamu minta dari suatu link
+- `/cplay <reply ke file musik>` - Memainkan lagu dari suatu file musik
+- `/csplay <judul lagu>` - Memainkan lagu via jio saavn
+- `/cplaylist` - Melihat playlist yang dimainkan
+- `/cccurrent` - Melihat lagu yang sedang dimainkan
+- `/cplayer` - Membuka pengaturan mus
+- `/cpause` - Untuk jeda musik
+- `/cresume` - Untuk melanjutkan musik
+- `/cskip` - Untuk melewati lagu
+- `/cend` - Untuk berhenti memainkan musik
+- `/userbotjoinchannel` - Untuk undang Assistant bot
+
+
+### Perintah untuk Sudo Users ⚔️
+- `/userbotleaveall` - Menghapus Assistant bot dari semua grup & channel
+- `/gcast <reply ke text mu>` - Untuk melakukan pesan siaran
+- `/pmpermit [on/off]` - Untuk on/off pesan pm permit
 
 #### Pmpermit
-- `.a` - approove someone to pm you
-- `.da` - disapproove someone to pm you
-+ Sudo Users can execute any command in any groups
+- `.a` - Mengizinkan seseorang untuk chat
+- `.da` - Tidak mengizinkan seseorang untuk chat
+- Kamu bisa custom jawaban otomatis chat dengan menambahkan vars `PMMSG` lalu isi value vars dengan text custom mu (Settings/Edit vars)
+
++ Sudo Users adalah orang yg memiliki akses penuh layaknya owner bot
 
 
 
-### Inspiration
-- [Callsmusic](http://github.com/callsmusic/callsmusic)
-- [tgvc-userbot](https://github.com/callsmusic/tgvc-userbot)
+  ### Credits
+<details>
+  <summary><b></b>Klik disini untuk melihat daftar credits</summary>
 
-This project is inspired on the hard work done by [Rojserbest](http://github.com/rojserbest). Without his hardwork daisyxmusic won't exist. 
-Also DaisyXmusic is inspired by many opensource bots and userbots
+# THANK YOU SO MUCH TO ↓↓↓
+### DaisyXmusic
+DaisyXMusic is a hardwork of many people. Many contributors and open source projects (Specially callsmusic projects) helped a lot in this. 
 
-#### Developers &Contribtors
-- [InukaASiTH](https://github.com/InukaAsith): Dev
-- [Technical-Hunter](https://github.com/Technical-Hunter): Dev
-- [Rojserbest](http://github.com/rojserbest): Dev
+#### Contributors
+- [InukaAsith](https://github.com/InukaAsith): Dev / Owner
+- [lucifeermorningstar](https://github.com/lucifeermorningstar): Dev / Owner
+- [Technical-Hunter](https://github.com/Technical-Hunter): Dev / Owner
+- [Hellboy-OP](https://github.com/hellboy-op)
+- [Roj Serbest](http://github.com/rojserbest): Developer of callsmusic 
+- [DeshadeethThisarana](https://github.com/deshadeeth-thisarana): Dev
 - [Wrench](https://github.com/EverythingSuckz/): Dev
 - [Bemro](https://github.com/bemroofficial): Dev
 - [QueenArzoo](https://github.com/QueenArzoo): Dev
-- [lucifeermorningstar](https://github.com/lucifeermorningstar): Dev
-- [Hamker Cat](https://github.com/thehamkercat/)
-- [Anjana-Ma](https://github.com/Anjana-Ma): 
-- [ImJanindu](https://github.com/ImJanindu): 
-- [MARSHALX](https://github.com/MarshalX): TgCalls
-- [Original Repo owners](https://github.com/CallsMusic/CallsMusic)
+- [Anjana-Ma](https://github.com/Anjana-Ma): Dev
+- [ImJanindu](https://github.com/ImJanindu): Dev
+- [azimazizov9150](https://github.com/azimazizov9150): Contributor
 
 
+#### Special Credits
+- [Roj Serbest](http://github.com/rojserbest): Callsmusic Developer
+
+This bot is based on the original work done by [Rojserbest](http://github.com/rojserbest). Without his hardwork daisyxmusic won t exist. 
+DaisyXmusic is a modified version of [Callsmusic](https://github.com/callsmusic/callsmusic) for fit the needs of some users
+
+- [StarkGang](https://github.com/StarkGang/)
+- [SpEcHiDe](https://github.com/SpEcHiDe/)
+- [The Hamker Cat](https://github.com/thehamkercat)
+- [Laky(for PyTgCalls)](https://github.com/Laky-64)
+- [Dan (for pyrogram)](https://github.com/delivrance)
 
 
+#### Open Source codes used in this project 
+- https://github.com/callsmusic/callsmusic : Source code used here as base
+- https://github.com/DevsExpo/FridayUserbot/blob/master/main_startup/helper_func/basic_helpers.py : Functions from line 275 to 351
+- https://github.com/TheHamkerCat/WilliamButcherBot/blob/dev/wbb/modules/music.py : From lines 170 to 178
 
-## Copyright & License 👮
 
- - Copyright (C) 2020 - 2021 by [TeamDaisyX](github.com/teamdaisyx) ❤️️
- - Licensed under the terms of the [GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007](https://github.com/TeamDaisyX/DaisyXMusic/blob/master/LICENSE)
-    
-DaisyXMusic is Free Software: You can use, study share and improve it at your will. Specifically you can redistribute and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.    
-
-## Made with ♥️ by [Collin](http://t.me/CollinFowel)
+> This project exists thanks to these awesome developers and their codes and contributions.
+> And credits goes to all who supported, all who helped and API & environmental requirement package devs and all projects helped in making this project.
+> Special thanks to you for using bot
