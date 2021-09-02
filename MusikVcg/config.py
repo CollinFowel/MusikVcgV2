@@ -14,7 +14,6 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # Modified by Inukaasith
-# REMODIFIED by CollinFowel
 
 import os
 from os import path
@@ -28,14 +27,14 @@ que = {}
 SESSION_NAME = getenv("SESSION_NAME", "session")
 BOT_TOKEN = getenv("BOT_TOKEN")
 BOT_NAME = getenv("BOT_NAME")
-UPDATES_CHANNEL = getenv("UPDATES_CHANNEL", "MusikVcg")
-BG_IMAGE = getenv("BG_IMAGE", "https://telegra.ph/file/1d14d4f7ac156f4b87dd0.png")
+UPDATES_CHANNEL = getenv("UPDATES_CHANNEL", "xxstanme")
+BG_IMAGE = getenv("BG_IMAGE", "https://telegra.ph/file/e5d9523a3175991bdba12.png")
 admins = {}
 API_ID = int(getenv("API_ID", ""))
 API_HASH = getenv("API_HASH")
 BOT_USERNAME = getenv("BOT_USERNAME")
 ASSISTANT_NAME = getenv("ASSISTANT_NAME", "MusikVcg")
-SUPPORT_GROUP = getenv("SUPPORT_GROUP", "OWNER_MUSICVCG")
+SUPPORT_GROUP = getenv("SUPPORT_GROUP", "ChatBotXanon")
 PROJECT_NAME = getenv("PROJECT_NAME", "MusikVcg")
 SOURCE_CODE = getenv("SOURCE_CODE", "github.com/CollinFowel/MusikVcgV2")
 DURATION_LIMIT = int(getenv("DURATION_LIMIT", "7"))
