@@ -52,7 +52,7 @@ async def addchannel(client, message):
     except Exception as e:
         print(e)
         await message.reply_text(
-            f"<b> Flood Wait Error \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
+            f"<b> Flood Wait Error \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
             "\n\nAtau tambahkan Assistant Bot secara manual ke Grup Anda dan coba lagi</b>",
         )
         return
@@ -127,7 +127,7 @@ async def addcchannel(client, message):
     except Exception as e:
         print(e)
         await message.reply_text(
-            f"<b> Flood Wait Error \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
+            f"<b> Flood Wait Error \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
             "\n\nAtau tambahkan Assistant Bot secara manual ke Grup Anda dan coba lagi</b>",
         )
         return

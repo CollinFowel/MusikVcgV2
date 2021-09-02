@@ -14,7 +14,6 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-# REMODIFIED by CollinFowel
 
 from asyncio import QueueEmpty
 from pyrogram import Client
@@ -121,7 +120,7 @@ async def skip(_, message: Message):
         else:
             await callsmusic.set_stream(
                 chat_id, 
-                queues.get(chat_id)["file"]
+                queues.get(chat_id)["file_path"]
             )
 
     qeue = que.get(chat_id)
@@ -149,4 +148,4 @@ async def admincache(client, message: Message):
             for member in await conchat.linked_chat.get_members(filter="administrators")
         ],
     )
-    await message.reply_text("✅ Bot telah aktif\n✅ Daftar admin diperbaharui!\n\n✨ ᴊᴏɪɴ ᴊᴜɢᴀ ɢᴄ ᴋᴀᴍɪ ᴅɪ @infble")
+    await message.reply_text("✅ Bot telah aktif\n✅ Daftar admin diperbaharui!\n\n✨ **Join Group kita ya @ChatBotXanon **")

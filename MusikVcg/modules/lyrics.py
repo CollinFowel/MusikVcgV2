@@ -16,8 +16,6 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# REMODIFIED by CollinFowel
-
 import io
 import os
 
@@ -34,10 +32,10 @@ from pyrogram import Client as pbot
 
 @pbot.on_message(filters.command(["lyric", "lyrics"]))
 async def _(client, message):
-    lel = await message.reply("Mencari lyrics lagu.....")
+    lel = await message.reply("Mencari lirik.....")
     query = message.text
     if not query:
-        await lel.edit("`Silahkan tulis judul lagu yg kalian ingin cari lyrics nya `")
+        await lel.edit("`ketik /lyrics judul lagu `")
         return
 
     song = ""
@@ -46,9 +44,9 @@ async def _(client, message):
         if song.lyrics:
             reply = song.format()
         else:
-            reply = "Tidak dapat menemukan lyrics, coba cari dengan judul yg lebih jelas! kalo masih gabisa coba `.glyrics`"
+            reply = "Liriknya ga ketemu nih coba tulis judul lebih detail ya atau coba pake pertintah `.glyrics`"
     else:
-        reply = "Tidak dapat menemukan lyrics, coba cari dengan judul yg lebih jelas! kalo masih gabisa coba `.glyrics`"
+        reply = "Liriknya ga ketemu nih coba tulis judul lebih detail ya atau coba pake pertintah `.glyrics`"
 
     if len(reply) > 4095:
         with io.BytesIO(str.encode(reply)) as out_file:

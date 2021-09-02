@@ -14,8 +14,6 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-# REMODIFIED by CollinFowel
-
 import logging
 from MusikVcg.modules.msg import Messages as tr
 from pyrogram import Client
@@ -40,15 +38,15 @@ def _start(client, message):
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Tambahkan Saya Ke Grup ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
+                        "❤️🔥❤️🔥 Tambahkan Saya Ke Grup ❤️🔥❤️🔥", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
                 [
                     InlineKeyboardButton(
-                        "📲 Group", url=f"https://t.me/infble"), 
+                        "📲 Group", url=f"https://t.me/ChatBotXanon"), 
                     InlineKeyboardButton(
-                        "👤 Owner", url=f"https://t.me/CollinFowel")
+                        "👤 Owner", url=f"https://t.me/xxstanme")
                 ],[
                     InlineKeyboardButton(
-                        "💬 Tanya tanya klik disini", url=f"https://t.me/CollinFowel")
+                        "💬 Tanya tanya klik disini", url=f"https://t.me/xxstanme")
                 ]
             ]
         ),
@@ -58,12 +56,12 @@ def _start(client, message):
 @Client.on_message(filters.command("start") & ~filters.private & ~filters.channel)
 async def gstart(_, message: Message):
     await message.reply_text(
-        f"""**☇{PROJECT_NAME} Telah Aktif☇""",
+        f"""☇**{PROJECT_NAME} Telah Aktif**☇""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "💬 Tanya tanya klik disini", url=f"https://t.me/CollinFowel"
+                        "💬 Tanya tanya klik disini", url=f"https://t.me/xxstanme"
                     )
                 ]
             ]
@@ -103,10 +101,10 @@ def map(pos):
     elif(pos==len(tr.HELP_MSG)-1):
         url = f"https://t.me/{SUPPORT_GROUP}"
         button = [
-            [InlineKeyboardButton("➕ Tambahkan Saya Ke Grup ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
-            [InlineKeyboardButton(text = '📲 Group', url=f"https://t.me/infble"),
-             InlineKeyboardButton(text = '👤 Owner', url=f"https://t.me/CollinFowel")],
-            [InlineKeyboardButton(text = '💬 Tanya tanya klik disini', url=f"https://t.me/CollinFowel")],
+            [InlineKeyboardButton("❤️🔥❤️🔥 Tambahkan Saya Ke Grup ❤️🔥❤️🔥", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
+            [InlineKeyboardButton(text = '📲 Group', url=f"https://t.me/ChatBotXanon"),
+             InlineKeyboardButton(text = '👤 Owner', url=f"https://t.me/xxstanme")],
+            [InlineKeyboardButton(text = '💬 Tanya tanya klik disini', url=f"https://t.me/xxstanme")],
             [InlineKeyboardButton(text = '◀️', callback_data = f"help+{pos-1}")]
         ]
     else:

@@ -14,8 +14,6 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-# REMODIFIED by CollinFowel
-
 import os
 from MusikVcg.config import SOURCE_CODE
 from MusikVcg.config import ASSISTANT_NAME
@@ -50,7 +48,6 @@ f"""
 - /play <judul lagu> : memutar lagu dengan mengetikan judul lagu
 - /play <yt link> : memutar lagu melalui link yt
 - /play <reply ke vn> : memutar dari vn dgn cara reply vn tersebut
-- /dplay <judul lagu> : memutar lagu via deezer
 - /splay <judul lagu> : memutar lagu jio saavn
 
 ⎋ **Daftar Perintah lain**
@@ -59,6 +56,7 @@ f"""
 - /skip : putar lagu berikutnya
 - /pause : jeda pemutaran lagu
 - /resume : melanjutkan pemutaran lagu
+- /lyrics: mencari lirik lagu
 - /end : menghentikan pemutaran musik
 - /current : melihat lagu yang sedang diputar
 - /playlist : melihat daftar playlist
@@ -86,7 +84,6 @@ f"""
 **Daftar Perintah Menggunakan Bot di Channel**
 
 - /cplay <judul lagu> : memutar lagu dengan mengetikan judul lagu
-- /cdplay <judul lagu> : memutar lagu via deezer
 - /csplay <judul lagu> : memutar lagu jio saavn
 - /cplaylist - melihat daftar playlist
 - /cccurrent - melihat lagu yang sedang diputar

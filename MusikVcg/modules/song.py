@@ -50,8 +50,8 @@ def song(client, message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    m = message.reply("🔍 **Mencari lagu**")
-    ydl_opts = {"format": "bestaudio[ext=m4a]"}
+    m = message.reply("🔍 **Mencari lagu**"
+    ydl_opts = {"format": "bestaudio/best"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"
@@ -76,7 +76,7 @@ def song(client, message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = "**🎵 Uploaded by @CollinFowel**"
+        rep = "**🎵 Uploaded by @xxstanme**"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(dur_arr[i]) * secmul
@@ -268,11 +268,11 @@ def time_to_seconds(time):
 async def jssong(_, message):
     global is_downloading
     if len(message.command) < 2:
-        await message.reply_text("/saavn requires an argument.")
+        await message.reply_text("/saavn ketikan judul yang jelas dan detail.")
         return
     if is_downloading:
         await message.reply_text(
-            "Another download is in progress, try again after sometime."
+            "Sebentar ya lagi proses download yg lain dulu , silahkan coba beberapa saat lagi."
         )
         return
     is_downloading = True
@@ -291,45 +291,6 @@ async def jssong(_, message):
         song = await download_song(slink)
         await m.edit("Uploading")
         await message.reply_audio(audio=song, title=sname, performer=ssingers)
-        os.remove(song)
-        await m.delete()
-    except Exception as e:
-        is_downloading = False
-        await m.edit(str(e))
-        return
-    is_downloading = False
-
-
-# Deezer Music
-
-
-@Client.on_message(filters.command("deezer") & ~filters.edited)
-async def deezsong(_, message):
-    global is_downloading
-    if len(message.command) < 2:
-        await message.reply_text("/deezer requires an argument.")
-        return
-    if is_downloading:
-        await message.reply_text(
-            "Another download is in progress, try again after sometime."
-        )
-        return
-    is_downloading = True
-    text = message.text.split(None, 1)[1]
-    query = text.replace(" ", "%20")
-    m = await message.reply_text("Searching...")
-    try:
-        songs = await arq.deezer(query, 1)
-        if not songs.ok:
-            await message.reply_text(songs.result)
-            return
-        title = songs.result[0].title
-        url = songs.result[0].url
-        artist = songs.result[0].artist
-        await m.edit("Downloading")
-        song = await download_song(url)
-        await m.edit("Uploading")
-        await message.reply_audio(audio=song, title=title, performer=artist)
         os.remove(song)
         await m.delete()
     except Exception as e:
@@ -388,7 +349,7 @@ async def ytmusic(client, message: Message):
 
             if duration > DURATION_LIMIT:
                 await pablo.edit(
-                    f"❌ Video atau lagu durasi yang diminta lebih dari {DURATION_LIMIT} menit tidak diizinkan! durasi yang diperbolehkan {duration} menit"
+                    f"❌ Video atau lagu durasi yang diminta lebih dari {DURATION_LIMIT} menit tidak diizinkan! durasi yang diperbolehkan {duration} menit."
                 )
                 is_downloading = False
                 return

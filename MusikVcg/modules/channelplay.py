@@ -14,7 +14,6 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-# REMODIFIED by CollinFowel
 
 import json
 from os import path
@@ -70,7 +69,7 @@ async def playlist(client, message):
       lel = await client.get_chat(message.chat.id)
       lol = lel.linked_chat.id
     except:
-      message.reply("Silahkan hidupkan obrolan suara/vcg nya! Pastikan Channel sudah ditautkan dengan grup")
+      message.reply("Is this cat even linked?")
       return
     global que
     queue = que.get(lol)
@@ -81,13 +80,13 @@ async def playlist(client, message):
         temp.append(t)
     now_playing = temp[0][0]
     by = temp[0][1].mention(style="md")
-    msg = "<b>Lagu yang sedang diputar di</b> {}".format(lel.linked_chat.title)
+    msg = "**Lagu yang sedang diputar di** {}".format(lel.linked_chat.title)
     msg += "\n- " + now_playing
     msg += "\n- Req by " + by
     temp.pop(0)
     if temp:
         msg += "\n\n"
-        msg += "<b>Antrian lagu</b>"
+        msg += "**Antrian lagu**"
         for song in temp:
             name = song[0]
             usr = song[1].mention(style="md")
@@ -199,7 +198,7 @@ async def p_cb(b, cb):
             temp.append(t)
         now_playing = temp[0][0]
         by = temp[0][1].mention(style="md")
-        msg = "**Lagu yang sedang diputar** di {}".format(conv.title)
+        msg = "**Lagu yang sedang diputar di** {}".format(conv.title)
         msg += "\n- " + now_playing
         msg += "\n- Req by " + by
         temp.pop(0)
@@ -267,13 +266,13 @@ async def m_cb(b, cb):
     elif type_ == "cplaylist":
         queue = que.get(cb.message.chat.id)
         if not queue:
-            await cb.message.edit("Tidak ada lagu yang sedang dimainkan!")
+            await cb.message.edit("Player is idle")
         temp = []
         for t in queue:
             temp.append(t)
         now_playing = temp[0][0]
         by = temp[0][1].mention(style="md")
-        msg = "**Lagu yang sedang diputar** di {}".format(cb.message.chat.title)
+        msg = "**Lagu yang sedang diputar di ** {}".format(cb.message.chat.title)
         msg += "\n- " + now_playing
         msg += "\n- Req by " + by
         temp.pop(0)
@@ -428,7 +427,7 @@ async def play(_, message: Message):
     message.from_user.id
     text_links = None
     message.from_user.first_name
-    await lel.edit("🔍 <b>Mencari lagu</b>")
+    await lel.edit("🔎 <b>Mencari lagu</b>")
     message.from_user.id
     user_id = message.from_user.id
     message.from_user.first_name
@@ -467,7 +466,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton("Daftar Playlist", callback_data="cplaylist"),
-                    InlineKeyboardButton("Group", url="https://t.me/infble"),
+                    InlineKeyboardButton("Group", url="https://t.me/ChatBotXanon"),
                 ],
                 [InlineKeyboardButton(text="❌ Tutup", callback_data="ccls")],
             ]
@@ -488,7 +487,7 @@ async def play(_, message: Message):
     elif urls:
         query = toxt
         await lel.edit("🎶 **Memproses lagu yang diminta**")
-        ydl_opts = {"format": "bestaudio[ext=m4a]"}
+        ydl_opts = {"format": "bestaudio/best"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
             url = f"https://youtube.com{results[0]['url_suffix']}"
@@ -514,7 +513,7 @@ async def play(_, message: Message):
                 dur += (int(dur_arr[i]) * secmul)
                 secmul *= 60
             if (dur / 60) > DURATION_LIMIT:
-                 await lel.edit(f"❌ Video atau lagu dengan durasi lebih dari {DURATION_LIMIT} menit tidak dapat diputar!")
+                 await lel.edit(f"❌ Video atau lagu dengan durasi lebih dari {DURATION_LIMIT} menit tidak dapat diputar!"
                  return
         except:
             pass        
@@ -524,7 +523,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton("Daftar Playlist", callback_data="cplaylist"),
-                    InlineKeyboardButton("Group", url="https://t.me/infble"),
+                    InlineKeyboardButton("Group", url="https://t.me/ChatBotXanon"),
                 ],
                 [
                     InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
@@ -542,7 +541,7 @@ async def play(_, message: Message):
             query += " " + str(i)
         print(query)
         await lel.edit("🎶 **Memproses lagu yang diminta**")
-        ydl_opts = {"format": "bestaudio[ext=m4a]"}
+        ydl_opts = {"format": "bestaudio/best"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
             url = f"https://youtube.com{results[0]['url_suffix']}"
@@ -568,7 +567,7 @@ async def play(_, message: Message):
                 dur += (int(dur_arr[i]) * secmul)
                 secmul *= 60
             if (dur / 60) > DURATION_LIMIT:
-                 await lel.edit(f"❌ Video atau lagu dengan durasi lebih dari {DURATION_LIMIT} menit tidak dapat diputar!")
+                 await lel.edit(f"❌ Video atau lagu dengan durasi lebih dari {DURATION_LIMIT} menit tidak dapat diputar!"
                  return
         except:
             pass
@@ -578,7 +577,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton("Daftar Playlist", callback_data="cplaylist"),
-                    InlineKeyboardButton("Group", url="https://t.me/infble"),
+                    InlineKeyboardButton("Group", url="https://t.me/ChatBotXanon"),
                 ],
                 [
                     InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
@@ -627,12 +626,11 @@ async def play(_, message: Message):
         return await lel.delete()
 
 
-@Client.on_message(filters.command(["channeldplay","cdplay"]) & filters.group & ~filters.edited)
+@Client.on_message(filters.command(["channelsplay","csplay"]) & filters.group & ~filters.edited)
 @authorized_users_only
-async def deezer(client: Client, message_: Message):
+async def jiosaavn(client: Client, message_: Message):
     global que
     lel = await message_.reply("🔄 <b>Mohon tunggu sebentar</b>")
-
     try:
       conchat = await client.get_chat(message_.chat.id)
       conid = conchat.linked_chat.id
@@ -640,136 +638,6 @@ async def deezer(client: Client, message_: Message):
       chid = conid
     except:
       await message_.reply("Silahkan hidupkan obrolan suara/vcg nya! Pastikan Channel sudah ditautkan dengan grup!")
-      return
-    try:
-      administrators = await get_administrators(conv)
-    except:
-      await message.reply("Am I admin of Channel") 
-    try:
-        user = await USER.get_me()
-    except:
-        user.first_name = "MusikVcg"
-    usar = user
-    wew = usar.id
-    try:
-        # chatdetails = await USER.get_chat(chid)
-        await client.get_chat_member(chid, wew)
-    except:
-        for administrator in administrators:
-            if administrator == message_.from_user.id:
-                if message_.chat.title.startswith("Channel Music: "):
-                    await lel.edit(
-                        "<b>Jangan lupa untuk menambahkan Assistant bot ke Channel Anda</b>",
-                    )
-                    pass
-                try:
-                    invitelink = await client.export_chat_invite_link(chid)
-                except:
-                    await lel.edit(
-                        "<b>Tambahkan Saya sebagai admin grup Anda terlebih dahulu</b>",
-                    )
-                    return
-
-                try:
-                    await USER.join_chat(invitelink)
-                    await lel.edit(
-                        "<b>Assistant bot berhasil bergabung di Group Anda</b>",
-                    )
-
-                except UserAlreadyParticipant:
-                    pass
-                except Exception:
-                    # print(e)
-                    await lel.edit(
-                        f"<b>❗️ Flood Wait Error ❗️ \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
-                        "\n\nAtau tambahkan Assistant Bot secara manual ke Grup Anda dan coba lagi</b>",
-                    )
-    try:
-        await USER.get_chat(chid)
-        # lmoa = await client.get_chat_member(chid,wew)
-    except:
-        await lel.edit(
-            f"<i> {user.first_name} Assistant Bot terkena banned dari Grup ini, Minta admin untuk unbanned assistant bot lalu tambahkan {user.first_name} Assistant Bot secara manual</i>"
-        )
-        return
-    requested_by = message_.from_user.first_name
-
-    text = message_.text.split(" ", 1)
-    queryy = text[1]
-    query=queryy
-    res = lel
-    await res.edit(f"Mencari lagu untuk `{queryy}` dari deezer")
-    try:
-        songs = await arq.deezer(query,1)
-        if not songs.ok:
-            await message_.reply_text(songs.result)
-            return
-        title = songs.result[0].title
-        url = songs.result[0].url
-        artist = songs.result[0].artist
-        duration = songs.result[0].duration
-        thumbnail = songs.result[0].thumbnail
-    except:
-        await res.edit("Tidak ada lagu yang ditemukan!")
-        return
-    keyboard = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton("Daftar Playlist", callback_data="cplaylist"),
-                InlineKeyboardButton("Group", url="https://t.me/infble"),
-            ],
-            [InlineKeyboardButton(text="Owner", url="https://t.me/CollinFowel")],
-            [InlineKeyboardButton(text="❌ Tutup", callback_data="ccls")],
-        ]
-    )
-    file_path = await convert(wget.download(url))
-    await res.edit("Generating Thumbnail")
-    await generate_cover(requested_by, title, artist, duration, thumbnail)
-    chat_id = chid
-    if chat_id in callsmusic.active_chats:
-        await res.edit("adding in queue")
-        position = await queues.put(chat_id, file=file_path)
-        qeue = que.get(chat_id)
-        s_name = title
-        r_by = message_.from_user
-        loc = file_path
-        appendable = [s_name, r_by, loc]
-        qeue.append(appendable)
-        await res.edit_text(f"🎵 **Lagu yang Anda minta dalam antrian diposisi** {position}")
-    else:
-        await res.edit_text(f"🎵 Playing....")
-
-        que[chat_id] = []
-        qeue = que.get(chat_id)
-        s_name = title
-        r_by = message_.from_user
-        loc = file_path
-        appendable = [s_name, r_by, loc]
-        qeue.append(appendable)
-    await callsmusic.set_stream(chat_id, file_path)
-    await res.delete()
-
-    m = await client.send_photo(
-        chat_id=message_.chat.id,
-        reply_markup=keyboard,
-        photo="final.png",
-        caption=f"🎵 **Sedang memutar lagu** [{title}]({url}) Via Deezer di Channel Grup",
-    )
-    os.remove("final.png")
-
-
-@Client.on_message(filters.command(["channelsplay","csplay"]) & filters.group & ~filters.edited)
-@authorized_users_only
-async def jiosaavn(client: Client, message_: Message):
-    global que
-    lel = await message_.reply("🔄 **Mohon tunggu sebentar**")
-    try:
-      conchat = await client.get_chat(message_.chat.id)
-      conid = conchat.linked_chat.id
-      conv = conchat.linked_chat
-      chid = conid
-    except:
-      await message_.reply("Silahkan hidupkan obrolan suara/vcg nya! Pastikan Channel sudah ditautkan dengan grup")
       return
     try:
       administrators = await get_administrators(conv)
@@ -827,7 +695,7 @@ async def jiosaavn(client: Client, message_: Message):
     text = message_.text.split(" ", 1)
     query = text[1]
     res = lel
-    await res.edit(f"Mencari lagu untuk`{query}` dari jio saavn")
+    await res.edit(f"Mencari lagu untuk `{queryy}` dari deezer")
     try:
         songs = await arq.saavn(query)
         if not songs.ok:
@@ -846,11 +714,11 @@ async def jiosaavn(client: Client, message_: Message):
         [
             [
                 InlineKeyboardButton("Daftar Playlist", callback_data="cplaylist"),
-                InlineKeyboardButton("Group", url="https://t.me/infble"),
+                InlineKeyboardButton("Group", url="https://t.me/ChatBotXanon"),
             ],
             [
                 InlineKeyboardButton(
-                    text="Owner", url="https://t.me/CollinFowel"
+                    text="Join Updates Channel", url=f"https://t.me/{updateschannel}"
                 )
             ],
             [InlineKeyboardButton(text="❌ Tutup", callback_data="ccls")],
@@ -875,7 +743,7 @@ async def jiosaavn(client: Client, message_: Message):
         )
 
     else:
-        await res.edit_text(f"🎵 Playing.....")
+        await res.edit_text(f"{bn}=🎵 Playing.....")
         que[chat_id] = []
         qeue = que.get(chat_id)
         s_name = sname

@@ -43,11 +43,11 @@ async def broadcast(_, message: Message):
             try:
                 await USER.send_message(dialog.chat.id, lmao)
                 sent = sent+1
-                await wtf.edit(f"`mengirim pesan gcast...` \n\n**Terkirim ke:** `{sent}` Group \n**Gagal terkirim:** {failed} Group")
+                await wtf.edit(f"Mengirim pesan gcast... \n\n**Terkirim ke:** `{sent}` Group \n**Gagal terkirim:** {failed} Group")
                 await asyncio.sleep(3)
             except:
                 failed=failed+1
                 #await wtf.edit(f"`broadcasting...` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
                 
             
-        await message.reply_text(f"`Berhasil mengirim gcast` \n\n**Terkirim ke:** `{sent}` Group \n**Gagal terkirim:** {failed} Group")
+        await message.reply_text(f"Berhasil mengirim gcast \n\n**Terkirim ke:** `{sent}` Group \n**Gagal terkirim:** {failed} Group")
