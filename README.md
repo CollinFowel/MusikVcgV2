@@ -29,19 +29,17 @@
 
 • Silahkan pilih mau deploy via apa, kalo ga ngerti bisa tanya [@xxstanme](https://t.me/xxstanme) di telegram
 
-<p align="left"><a href="https://heroku.com/deploy?template=https://github.com/CollinFowel/MusikVcgV2/tree/master"> <img src="https://img.shields.io/badge/Deploy%20To%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
+<p align="left"><a href="https://heroku.com/deploy?template=https://github.com/CollinFowel/MusikVcgV2/tree/master"> <img src="https://img.shields.io/badge/Deploy%20Ke%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
 
 
 
-<p align="left"><a href="https://railway.app/new/template?template=https://github.com/CollinFowel/MusikVcgV2&envs=SESSION_NAME,BOT_TOKEN,BOT_USERNAME,BOT_NAME,PROJECT_NAME,ARQ_API_KEY,ASSISTANT_NAME,BG_IMAGE,API_ID,API_HASH,SUDO_USERS,DURATION_LIMIT"> <img src="https://img.shields.io/badge/Deploy%20To%20Railway-black?style=for-the-badge&logo=railway" width="220" height="38.45"/></a></p>
+<p align="left"><a href="https://railway.app/new/template?template=https://github.com/CollinFowel/MusikVcgV2&envs=SESSION_NAME,BOT_TOKEN,BOT_USERNAME,BOT_NAME,PROJECT_NAME,ARQ_API_KEY,ASSISTANT_NAME,BG_IMAGE,API_ID,API_HASH,SUDO_USERS,DURATION_LIMIT"> <img src="https://img.shields.io/badge/Deploy%20Ke%20Railway-black?style=for-the-badge&logo=railway" width="230" height="38.45"/></a></p>
 
 
 • Klik tombol dibawah untuk mengambil `Pyrogram String Session` :
 
-<p align="left"><a href="https://repl.it/@CollinFowel/StringSessionPyrogram#main.py"> <img src="https://img.shields.io/badge/Ambil%20String%20On%20repl.it-black?style=for-the-badge&logo=repl.it" width="240" height="38.45"/></a></p>
+<p align="left"><a href="https://repl.it/@CollinFowel/StringSessionPyrogram#main.py"> <img src="https://img.shields.io/badge/Ambil%20String%20Disini-black?style=for-the-badge&logo=replit" width="230" height="38.45"/></a></p>
 
-
-[![Run on Repl.it](https://repl.it/badge/github/SpEcHiDe/GenerateStringSession)](https://repl.it/@CollinFowel/StringSessionPyrogram#main.py)
 
 ### ⚔ Self-hosting (For Devs) 
 ```sh
