@@ -38,7 +38,7 @@ def _start(client, message):
             [
                 [
                     InlineKeyboardButton(
-                        "❤️🔥❤️🔥 Tambahkan Saya Ke Grup ❤️🔥❤️🔥", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
+                        "⚡ Tambahkan Saya Ke Grup ⚡", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
                 [
                     InlineKeyboardButton(
                         "📲 Group", url=f"https://t.me/ChatBotXanon"), 
@@ -101,7 +101,7 @@ def map(pos):
     elif(pos==len(tr.HELP_MSG)-1):
         url = f"https://t.me/{SUPPORT_GROUP}"
         button = [
-            [InlineKeyboardButton("❤️🔥❤️🔥 Tambahkan Saya Ke Grup ❤️🔥❤️🔥", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
+            [InlineKeyboardButton("⚡ Tambahkan Saya Ke Grup ⚡", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
             [InlineKeyboardButton(text = '📲 Group', url=f"https://t.me/ChatBotXanon"),
              InlineKeyboardButton(text = '👤 Owner', url=f"https://t.me/xxstanme")],
             [InlineKeyboardButton(text = '💬 Tanya tanya klik disini', url=f"https://t.me/xxstanme")],
