@@ -23,11 +23,11 @@
       "required": true
     },
     "BOT_USERNAME": {
-      "description": "Masukan username bot mu TANPA TANDA @",
+      "description": "Masukan USERNAME BOT mu tanpa tanda @",
       "required": true
     },
     "BOT_NAME": {
-      "description": "Masukan nama bot mu, NAMA YA BUKAN USERNAME",
+      "description": "Masukan NAMA BOT mu, NAMA YA BUKAN USERNAME",
       "required": false,
       "value": ""
     },
@@ -37,18 +37,18 @@
       "value": "MusikVcg"
     },
     "ASSISTANT_NAME": {
-      "description": "Masukan username Assistant Bot mu tanpa tanda @",
+      "description": "Masukan USERNAME ASSISTANT BOT mu tanpa tanda @",
       "required": true
     },
     "ARQ_API_KEY": {
-      "description": "Dapatkan token mu dari @ARQRobot.",
+      "description": "Buka telegram lalu ambil api_key kamu dari @ARQRobot.",
       "required": false,
       "value": ""
     },    
     "BG_IMAGE": {
       "description": "Isi dengan link custom background yg kalian punya wajib PNG! [ABAIKAN INI KALO TIDAK NGERTI].",
       "required": false,
-      "value": "https://telegra.ph/file/e5d9523a3175991bdba12.png"
+      "value": "https://telegra.ph/file/f17723e9be903b99e0463.png"
     },     
     "API_ID": {
       "description": "Dapatkan App ID dari my.telegram.org/apps",
@@ -68,7 +68,7 @@
       "required": true
     },
     "DURATION_LIMIT": {
-      "description": "Masukan batas durasi audio yg kalian inginkan (menit).",
+      "description": "Masukan batas durasi lagu yg kalian inginkan bebas brp aja (menit).",
       "required": true,
       "value": "90"
     }
