@@ -31,7 +31,8 @@
 
 <p align="left"><a href="https://heroku.com/deploy?template=https://github.com/CollinFowel/MusikVcgV2/tree/master"> <img src="https://img.shields.io/badge/Deploy%20To%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
 
-<p align="left"><a href="https://railway.app/new/template=https://github.com/CollinFowel/MusikVcgV2&envs=SESSION_NAME,BOT_TOKEN,BOT_USERNAME,BOT_NAME,PROJECT_NAME,ARQ_API_KEY,ASSISTANT_NAME,BG_IMAGE,API_ID,API_HASH,SUDO_USERS,DURATION_LIMIT"> <img src="https://img.shields.io/badge/Deploy%20To%20Railway-black?style=for-the-badge&logo=railway" width="220" height="38.45"/></a></p>
+
+<p align="left"><a href="https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/CollinFowel/MusikVcgV2&envs=SESSION_NAME,BOT_TOKEN,BOT_USERNAME,BOT_NAME,PROJECT_NAME,ARQ_API_KEY,ASSISTANT_NAME,BG_IMAGE,API_ID,API_HASH,SUDO_USERS,DURATION_LIMIT"> <img src="https://img.shields.io/badge/Deploy%20To%20Railway-black?style=for-the-badge&logo=railway" width="220" height="38.45"/></a></p>
 
 
 [![Deploy+on+Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/CollinFowel/MusikVcgV2&envs=SESSION_NAME,BOT_TOKEN,BOT_USERNAME,BOT_NAME,PROJECT_NAME,ARQ_API_KEY,ASSISTANT_NAME,BG_IMAGE,API_ID,API_HASH,SUDO_USERS,DURATION_LIMIT)
@@ -120,7 +121,7 @@ Hanya untuk admin grup tertaut:
 
 
 
-  ### Credits
+### Credits
 <details>
   <summary><b></b>Klik disini untuk melihat daftar credits</summary>
 
@@ -129,6 +130,7 @@ Hanya untuk admin grup tertaut:
 DaisyXMusic is a hardwork of many people. Many contributors and open source projects (Specially callsmusic projects) helped a lot in this. 
 
 #### Contributors
+- [Me](https://github.com/CollinFowel): Owner This Repo
 - [InukaAsith](https://github.com/InukaAsith): Dev / Owner
 - [lucifeermorningstar](https://github.com/lucifeermorningstar): Dev / Owner
 - [Technical-Hunter](https://github.com/Technical-Hunter): Dev / Owner
