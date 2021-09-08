@@ -36,9 +36,9 @@
 <p align="left"><a href="https://railway.app/new/template?template=https://github.com/CollinFowel/MusikVcgV2&envs=SESSION_NAME,BOT_TOKEN,BOT_USERNAME,BOT_NAME,PROJECT_NAME,ARQ_API_KEY,ASSISTANT_NAME,BG_IMAGE,API_ID,API_HASH,SUDO_USERS,DURATION_LIMIT"> <img src="https://img.shields.io/badge/Deploy%20Ke%20Railway-black?style=for-the-badge&logo=railway" width="226" height="38.45"/></a></p>
 
 
-• Klik tombol dibawah untuk mengambil `Pyrogram String Session` :
+• Klik tombol dibawah untuk mengambil `Pyrogram String Session` dan nanti pilih nomor 2 ya :
 
-<p align="left"><a href="https://repl.it/@CollinFowel/StringSessionPyrogram#main.py"> <img src="https://img.shields.io/badge/Ambil%20String%20Disini-black?style=for-the-badge&logo=replit" width="238" height="38.45"/></a></p>
+<p align="left"><a href="https://replit.com/@CollinFowel/Ambil-String-Session#main.py"> <img src="https://img.shields.io/badge/Ambil%20String%20Disini-black?style=for-the-badge&logo=replit" width="238" height="38.45"/></a></p>
 
 
 ### ⚔ Self-hosting (For Devs) 
