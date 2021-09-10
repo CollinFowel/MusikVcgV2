@@ -18,10 +18,7 @@
 import requests
 from pyrogram import Client as Bot
 
-from MusikVcg.config import API_HASH
-from MusikVcg.config import API_ID
-from MusikVcg.config import BG_IMAGE
-from MusikVcg.config import BOT_TOKEN
+from MusikVcg.config import API_HASH, API_ID, BG_IMAGE, BOT_TOKEN
 from MusikVcg.services.callsmusic import run
 
 response = requests.get(BG_IMAGE)
