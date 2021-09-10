@@ -495,7 +495,7 @@ async def play(_, message: Message):
                 )
                 return
         except:
-            pass,
+            pass
         dlurl = url
         dlurl = dlurl.replace("youtube", "youtubepp")
         keyboard = InlineKeyboardMarkup(
