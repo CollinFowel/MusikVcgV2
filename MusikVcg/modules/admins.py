@@ -16,17 +16,15 @@
 
 
 from asyncio import QueueEmpty
-from pyrogram import Client 
-from pyrogram import filters
+
+from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from MusikVcg.config import que
 from MusikVcg.function.admins import set
 from MusikVcg.helpers.channelmusic import get_chat_id
-from MusikVcg.helpers.decorators import authorized_users_only
-from MusikVcg.helpers.decorators import errors
-from MusikVcg.helpers.filters import command
-from MusikVcg.helpers.filters import other_filters
+from MusikVcg.helpers.decorators import authorized_users_only, errors
+from MusikVcg.helpers.filters import command, other_filters
 from MusikVcg.services.callsmusic import callsmusic
 from MusikVcg.services.queues import queues
 
@@ -102,10 +100,7 @@ async def skip(_, message: Message):
         if queues.is_empty(chat_id):
             await callsmusic.stop(chat_id)
         else:
-            await callsmusic.set_stream(
-                chat_id, 
-                queues.get(chat_id)["file_path"]
-            )
+            await callsmusic.set_stream(chat_id, queues.get(chat_id)["file"])
 
     qeue = que.get(chat_id)
     if qeue:

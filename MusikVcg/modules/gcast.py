@@ -17,20 +17,17 @@
 
 import asyncio
 
-from pyrogram import Client
-from pyrogram import filters
-from pyrogram.types import Dialog
-from pyrogram.types import Chat
+from pyrogram import Client, filters
 from pyrogram.types import Message
-from pyrogram.errors import UserAlreadyParticipant
 
-from MusikVcg.services.callsmusic.callsmusic import client as USER
 from MusikVcg.config import SUDO_USERS
+from MusikVcg.services.callsmusic.callsmusic import client as USER
+
 
 @Client.on_message(filters.command(["broadcast"]))
 async def broadcast(_, message: Message):
-    sent=0
-    failed=0
+    sent = 0
+    failed = 0
     if message.from_user.id not in SUDO_USERS:
         return
     else:
@@ -42,12 +39,15 @@ async def broadcast(_, message: Message):
         async for dialog in USER.iter_dialogs():
             try:
                 await USER.send_message(dialog.chat.id, lmao)
-                sent = sent+1
-                await wtf.edit(f"Mengirim pesan gcast... \n\n**Terkirim ke:** `{sent}` Group \n**Gagal terkirim:** {failed} Group")
+                sent = sent + 1
+                await wtf.edit(
+                    f"`Mengirim pesan berantai...` \n\n**Terkirim ke:** `{sent}` Grup Chat \n**Gagal mengirim ke:** {failed} Grup Chat"
+                )
                 await asyncio.sleep(3)
             except:
-                failed=failed+1
-                #await wtf.edit(f"`broadcasting...` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
-                
-            
-        await message.reply_text(f"Berhasil mengirim gcast \n\n**Terkirim ke:** `{sent}` Group \n**Gagal terkirim:** {failed} Group")
+                failed = failed + 1
+                # await wtf.edit(f"`broadcasting...` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
+
+        await message.reply_text(
+            f"`Berhasil melakukan broadcast ` \n\n**Terkirim ke:** `{sent}` Grup Chat \n**Gagal mengirim ke:** {failed} Grup Chat"
+        )

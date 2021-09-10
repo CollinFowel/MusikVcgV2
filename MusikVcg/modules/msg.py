@@ -14,26 +14,22 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import os
-from MusikVcg.config import SOURCE_CODE
-from MusikVcg.config import ASSISTANT_NAME
-from MusikVcg.config import PROJECT_NAME
-from MusikVcg.config import SUPPORT_GROUP
-from MusikVcg.config import UPDATES_CHANNEL
-class Messages():
-      START_MSG = "**Hello 👋 [{}](tg://user?id={})!**\n\n🤖 Saya bot musik yang dibuat untuk memutar musik di obrolan suara Grup & Channel Telegram.\n\n✅ Ketik /help bila butuh bantuan."
-      HELP_MSG = [
+from DaisyXMusic.config import ASSISTANT_NAME, PROJECT_NAME
+
+
+class Messages:
+    START_MSG = "**Hello 👋 [{}](tg://user?id={})!**\n\n🤖 Saya bot musik yang dibuat untuk memutar musik di obrolan suara Grup & Channel Telegram.\n\n✅ Ketik /help bila butuh bantuan."
+    HELP_MSG = [
         ".",
-f"""
+        f"""
 **Hei 👋 Selamat datang di {PROJECT_NAME}
 
 ⚡ {PROJECT_NAME} dapat memutar musik di obrolan suara Grup dan obrolan suara Channel Anda
 
 ⚡ Nama Assistant Bot >> @{ASSISTANT_NAME}\n\nKlik tombol dibawah untuk melihat Panduan menggunakan bot**
 """,
-
-f"""
-📌 ** Panduan Menggunakan Bot di Group**
+        f"""
+❖ **Panduan Menggunakan Bot di Group**
 
 1) Tambahkan bot ini ke Grup Anda
 2) Jadikan bot ini dan bot @{ASSISTANT_NAME} sebagai admin dan berikan semua akses , kecuali jangan di anonim
@@ -62,8 +58,7 @@ f"""
 - /playlist : melihat daftar playlist
 
 """,
-        
-f"""
+        f"""
 ⎋ ** Daftar Perintah Lain**
 
 - /song <judul lagu> : mendownload lagu dengan cepat
@@ -72,8 +67,7 @@ f"""
 - /userbotjoin :  menambahkan @{ASSISTANT_NAME} ke Group Anda
 
 """,
-
-f"""
+        f"""
 📌 **Panduan Menggunakan Bot di Channel**
 
 1) Jadikan Bot ini sebagai Admin di Channel dan Group Anda
@@ -94,5 +88,5 @@ f"""
 - /cend - menghentikan pemutaran musik
 - /userbotjoinchannel - menambahkan Assistant ke Channel Anda
 
-"""
-      ]
+""",
+    ]

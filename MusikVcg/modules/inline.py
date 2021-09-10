@@ -1,8 +1,9 @@
-from pyrogram import Client
-from pyrogram import errors
-from pyrogram.types import InlineQuery
-from pyrogram.types import InlineQueryResultArticle   
-from pyrogram.types import InputTextMessageContent
+from pyrogram import Client, errors
+from pyrogram.types import (
+    InlineQuery,
+    InlineQueryResultArticle,
+    InputTextMessageContent,
+)
 from youtubesearchpython import VideosSearch
 
 
@@ -15,7 +16,7 @@ async def inline(client: Client, query: InlineQuery):
         await client.answer_inline_query(
             query.id,
             results=answers,
-            switch_pm_text="Ketik judul lagu atau video yang kalian cari...",
+            switch_pm_text="Ketik judul lagu/video yg mau cari...",
             switch_pm_parameter="help",
             cache_time=0,
         )
