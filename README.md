@@ -31,11 +31,6 @@
 
 <p align="left"><a href="https://heroku.com/deploy?template=https://github.com/CollinFowel/MusikVcgV2/tree/master"> <img src="https://img.shields.io/badge/Deploy%20Ke%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
 
-
-
-<p align="left"><a href="https://railway.app/new/template?template=https://github.com/CollinFowel/MusikVcgV2&envs=SESSION_NAME,BOT_TOKEN,BOT_USERNAME,BOT_NAME,PROJECT_NAME,ARQ_API_KEY,ASSISTANT_NAME,BG_IMAGE,API_ID,API_HASH,SUDO_USERS,DURATION_LIMIT"> <img src="https://img.shields.io/badge/Deploy%20Ke%20Railway-black?style=for-the-badge&logo=railway" width="226" height="38.45"/></a></p>
-
-
 • Klik tombol dibawah untuk mengambil `Pyrogram String Session` dan nanti pilih nomor 2 ya :
 
 <p align="left"><a href="https://replit.com/@CollinFowel/Ambil-String-Session#main.py"> <img src="https://img.shields.io/badge/Ambil%20String%20Disini-black?style=for-the-badge&logo=replit" width="238" height="38.45"/></a></p>
@@ -129,6 +124,13 @@ Hanya untuk admin grup tertaut:
 ### DaisyXmusic
 DaisyXMusic is a hardwork of many people. Many contributors and open source projects (Specially callsmusic projects) helped a lot in this. 
 
+### Inspiration
+- [Callsmusic](http://github.com/callsmusic/callsmusic)
+- [tgvc-userbot](https://github.com/callsmusic/tgvc-userbot)
+
+This project is inspired on the hard work done by [Rojserbest](http://github.com/rojserbest). Without his hardwork daisyxmusic won't exist. 
+Also DaisyXmusic is inspired by many opensource bots and userbots
+
 #### Contributors
 - [Me](https://github.com/CollinFowel): Owner This Repo
 - [InukaAsith](https://github.com/InukaAsith): Dev / Owner
@@ -145,25 +147,10 @@ DaisyXMusic is a hardwork of many people. Many contributors and open source proj
 - [azimazizov9150](https://github.com/azimazizov9150): Contributor
 
 
-#### Special Credits
-- [Roj Serbest](http://github.com/rojserbest): Callsmusic Developer
+## Copyright & License 👮
 
-This bot is based on the original work done by [Rojserbest](http://github.com/rojserbest). Without his hardwork daisyxmusic won t exist. 
-DaisyXmusic is a modified version of [Callsmusic](https://github.com/callsmusic/callsmusic) for fit the needs of some users
-
-- [StarkGang](https://github.com/StarkGang/)
-- [SpEcHiDe](https://github.com/SpEcHiDe/)
-- [The Hamker Cat](https://github.com/thehamkercat)
-- [Laky(for PyTgCalls)](https://github.com/Laky-64)
-- [Dan (for pyrogram)](https://github.com/delivrance)
-
-
-#### Open Source codes used in this project 
-- https://github.com/callsmusic/callsmusic : Source code used here as base
-- https://github.com/DevsExpo/FridayUserbot/blob/master/main_startup/helper_func/basic_helpers.py : Functions from line 275 to 351
-- https://github.com/TheHamkerCat/WilliamButcherBot/blob/dev/wbb/modules/music.py : From lines 170 to 178
-
-
-> This project exists thanks to these awesome developers and their codes and contributions.
-> And credits goes to all who supported, all who helped and API & environmental requirement package devs and all projects helped in making this project.
-> Special thanks to you for using bot
+ - Copyright (C) 2020 - 2021 by [TeamDaisyX](github.com/teamdaisyx) ❤️️
+ - Licensed under the terms of the [GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007](https://github.com/TeamDaisyX/DaisyXMusic/blob/master/LICENSE)
+    
+DaisyXMusic is Free Software: You can use, study share and improve it at your will. Specifically you can redistribute and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.    
+## Made with ♥️ by [TeamDaisyX](https://github.com/TeamDaisyX)
