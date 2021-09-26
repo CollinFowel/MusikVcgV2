@@ -48,7 +48,7 @@
     "BG_IMAGE": {
       "description": "Isi dengan link custom background yg kalian punya wajib PNG! [ABAIKAN INI KALO TIDAK NGERTI].",
       "required": false,
-      "value": "https://telegra.ph/file/f17723e9be903b99e0463.png"
+      "value": "https://telegra.ph/file/7fba659d96e6ad12b2bbf.png"
     },     
     "API_ID": {
       "description": "Dapatkan App ID dari my.telegram.org/apps",
