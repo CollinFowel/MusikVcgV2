@@ -53,7 +53,7 @@ async def addchannel(client, message):
     except Exception as e:
         print(e)
         await message.reply_text(
-            f"<b> Flood Wait Error \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
+            f"<b>Flood Wait Error \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
             "\n\nAtau tambahkan Assistant Bot secara manual ke Grup Anda dan coba lagi</b>",
         )
         return
@@ -74,7 +74,7 @@ async def rem(USER, message):
         )
         return
 
-    
+
 @Client.on_message(filters.command(["userbotleaveall"]))
 async def bye(client, message):
     if message.from_user.id in SUDO_USERS:
@@ -97,8 +97,8 @@ async def bye(client, message):
         await client.send_message(
             message.chat.id, f"Left {left} chats. Failed {failed} chats."
         )
-    
-    
+
+
 @Client.on_message(
     filters.command(["userbotjoinchannel", "ubjoinc"]) & ~filters.private & ~filters.bot
 )
@@ -136,7 +136,7 @@ async def addcchannel(client, message):
     except Exception as e:
         print(e)
         await message.reply_text(
-            f"<b> Flood Wait Error \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
+            f"<b>Flood Wait Error \n {user.first_name} Assistant Bot tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung! Pastikan pengguna tidak dibanned dalam grup."
             "\n\nAtau tambahkan Assistant Bot secara manual ke Grup Anda dan coba lagi</b>",
         )
         return

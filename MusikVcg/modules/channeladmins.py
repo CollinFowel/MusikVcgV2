@@ -20,11 +20,11 @@ from asyncio import QueueEmpty
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from MusikVcg.config import que
 from MusikVcg.function.admins import set
 from MusikVcg.helpers.decorators import authorized_users_only, errors
 from MusikVcg.services.callsmusic import callsmusic
 from MusikVcg.services.queues import queues
+from MusikVcg.config import que
 
 
 @Client.on_message(
@@ -41,13 +41,13 @@ async def pause(_, message: Message):
         await message.reply("Is chat even linked")
         return
     chat_id = chid
-    if (chat_id not in callsmusic.active_chats) or (
-        callsmusic.active_chats[chat_id] == "paused"
-    ):
-        await message.reply_text("❗ Tidak ada lagu yang sedang diputar!")
-    else:
-        callsmusic.pause(chat_id)
+    (
         await message.reply_text("▶️ Lagu dijeda!")
+    ) if (
+        callsmusic.pause(chat_id)
+    ) else (
+        await message.reply_text("❗ Tidak ada lagu yang sedang diputar!")
+    )
 
 
 @Client.on_message(
@@ -64,14 +64,15 @@ async def resume(_, message: Message):
         await message.reply("Is chat even linked")
         return
     chat_id = chid
-    if (chat_id not in callsmusic.active_chats) or (
-        callsmusic.active_chats[chat_id] == "playing"
-    ):
-        await message.reply_text("❗ Tidak ada lagu yang sedang dijeda!")
-    else:
+    (
+       await message.reply_text("⏸ Lagu tidak lagi dijeda!")
+    ) if (
         callsmusic.resume(chat_id)
-        await message.reply_text("⏸ Lagu tidak lagi dijeda!")
-
+    ) else (
+        await message.reply_text("❗ Tidak ada lagu yang sedang dijeda!")
+    )
+        
+    
 
 @Client.on_message(
     filters.command(["channelend", "cend"]) & filters.group & ~filters.edited
@@ -104,8 +105,6 @@ async def stop(_, message: Message):
 )
 @errors
 @authorized_users_only
-@errors
-@authorized_users_only
 async def skip(_, message: Message):
     global que
     try:
@@ -132,6 +131,64 @@ async def skip(_, message: Message):
     if not qeue:
         return
     await message.reply_text(f"- Melewati lagu **{skip[0]}**\n- Lagu yang diputar sekarang **{qeue[0][0]}**")
+    
+    
+@Client.on_message(
+    filters.command(["channelmute", "cmute"]) & filters.group & ~filters.edited
+)
+@errors
+@authorized_users_only
+async def mute(_, message: Message):
+    global que
+    try:
+        conchat = await _.get_chat(message.chat.id)
+        conid = conchat.linked_chat.id
+        chid = conid
+    except:
+        await message.reply("Is chat even linked")
+        return 
+    chat_id = chid
+    result = callsmusic.mute(chat_id)
+    (
+        await message.reply_text("✅ Musik di mute!")
+    ) if (
+        result == 0
+    ) else (
+        await message.reply_text("❌ Musik sudah di mute!")
+    ) if (
+        result == 1
+    ) else (
+        await message.reply_text("❌ Tidak ada lagu yang dimainkan!")
+    )
+        
+        
+@Client.on_message(
+    filters.command(["channelunmute", "cunmute"]) & filters.group & ~filters.edited
+)
+@errors
+@authorized_users_only
+async def unmute(_, message: Message):
+    global que
+    try:
+        conchat = await _.get_chat(message.chat.id)
+        conid = conchat.linked_chat.id
+        chid = conid
+    except:
+        await message.reply("Is chat even linked")
+        return 
+    chat_id = chid
+    result = callsmusic.unmute(chat_id)
+    (
+        await message.reply_text("✅ Musik di Unmuted")
+    ) if (
+        result == 0
+    ) else (
+        await message.reply_text("❌ Musik tidak dimute!")
+    ) if (
+        result == 1
+    ) else (
+        await message.reply_text("❌ Tidak ada lagu yang dimainkan!")
+    )
 
 
 @Client.on_message(filters.command("channeladmincache"))

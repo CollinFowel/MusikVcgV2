@@ -49,5 +49,5 @@ async def broadcast(_, message: Message):
                 # await wtf.edit(f"`broadcasting...` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
 
         await message.reply_text(
-            f"`Berhasil melakukan broadcast ` \n\n**Terkirim ke:** `{sent}` Grup Chat \n**Gagal mengirim ke:** {failed} Grup Chat"
+            f"`Berhasil melakukan broadcast...` \n\n**Terkirim ke:** `{sent}` Grup Chat \n**Gagal mengirim ke:** {failed} Grup Chat"
         )

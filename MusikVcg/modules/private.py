@@ -31,32 +31,25 @@ from MusikVcg.modules.msg import Messages as tr
 logging.basicConfig(level=logging.INFO)
 
 
-@Client.on_message(filters.private & filters.incoming & filters.command(['start']))
+@Client.on_message(filters.private & filters.incoming & filters.command(["start"]))
 def _start(client, message):
     client.send_message(
         message.chat.id,
         text=tr.START_MSG.format(message.from_user.first_name, message.from_user.id),
         parse_mode="markdown",
         reply_markup=InlineKeyboardMarkup(
+            [[
+               InlineKeyboardButton("⚡ Tambahkan Saya Ke Grup ⚡", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
+            ],
             [
-                [
-                    InlineKeyboardButton(
-                        "⚡ Tambahkan Saya Ke Grup ⚡", 
-                        url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        "📲 Group", url=f"https://t.me/ChatBotXanon"
-                    ),
-                    InlineKeyboardButton(
-                        "👤 Owner", url=f"https://t.me/xxstanme"
-                    ),
-                ],
-                [InlineKeyboardButton("💬 Tanya tanya klik disini", url=f"https://t.me/xxstanme")],
-            ]
+               InlineKeyboardButton("📲 Group", url=f"https://t.me/ChatBotXanon"),
+               InlineKeyboardButton("👤 Owner", url=f"https://t.me/xxstanme")
+            ],
+            [
+               InlineKeyboardButton("💬 Tanya tanya klik disini", url=f"https://t.me/xxstanme")
+           ]]
         ),
-        reply_to_message_id=message.message_id
+        reply_to_message_id=message.message_id,
     )
 
 
@@ -64,15 +57,7 @@ def _start(client, message):
 async def gstart(_, message: Message):
     await message.reply_text(
         f"""☇**{PROJECT_NAME} Telah Aktif**☇""",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "💬 Tanya tanya klik disini", url=f"https://t.me/xxstanme"
-                    )
-                ]
-            ]
-        ),
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("💬 Tanya tanya klik disini", url=f"https://t.me/xxstanme")]])
     )
 
 
@@ -112,28 +97,19 @@ def map(pos):
         button = [[InlineKeyboardButton(text="▶️", callback_data="help+2")]]
     elif pos == len(tr.HELP_MSG) - 1:
         url = f"https://t.me/{SUPPORT_GROUP}"
-        button = [
-            [
-                InlineKeyboardButton(
-                    "⚡ Tambahkan Saya Ke Grup ⚡",
-                    url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
-                )
-            ],
-            [
-                InlineKeyboardButton(
-                    text="📲 Group", url=f"https://t.me/ChatBotXanon"
-                ),
-                InlineKeyboardButton(
-                    text="👤 Owner", url=f"https://t.me/xxstanme"
-                ),
-            ],
-            [
-                InlineKeyboardButton(
-                    text="💬 Tanya tanya klik disini", url=f"https://t.me/xxstanme"
-                )
-            ],
-            [InlineKeyboardButton(text="◀️", callback_data=f"help+{pos-1}")],
-        ]
+        button = [[
+                    InlineKeyboardButton("⚡ Tambahkan Saya Ke Grup ⚡", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
+                  ],
+                  [
+                    InlineKeyboardButton(text="📲 Group", url=f"https://t.me/ChatBotXanon"),
+                    InlineKeyboardButton(text="👤 Owner", url=f"https://t.me/xxstanme")
+                  ],
+                  [
+                    InlineKeyboardButton(text="💬 Tanya tanya klik disini", url=f"https://t.me/xxstanme")
+                  ],
+                  [
+                    InlineKeyboardButton(text="◀️", callback_data=f"help+{pos-1}")
+                 ]]
     else:
         button = [
             [
@@ -148,14 +124,5 @@ def map(pos):
 async def ghelp(_, message: Message):
     await message.reply_text(
         f"""**👋 Hello, Saya bot musik yang dibuat untuk memutar musik di obrolan suara Grup & Channel Telegram.**""",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "⚡ Klik disini bila butuh bantuan ⚡",
-                        url=f"https://t.me/{BOT_USERNAME}?start",
-                    )
-                ]
-            ]
-        ),
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⚡ Klik disini bila butuh bantuan ⚡", url=f"https://t.me/{BOT_USERNAME}?start")]])
     )
