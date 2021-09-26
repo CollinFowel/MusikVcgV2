@@ -339,34 +339,6 @@ async def m_cb(b, cb):
             await cb.message.edit("Berhasil keluar dari Group!")
         else:
             await cb.answer("Assistant sedang tidak terhubung dengan obrolan suara/vcg!", show_alert=True)
-            
-    elif type_ == "cmute":
-              result = callsmusic.mute(chet_id)
-            (
-              await cb.message.edit("✅ Musik di mute")
-            ) if (
-              result == 0
-            ) else (
-              await cb.message.edit("❌ Musik sudah di mute!", show_alert=True)
-            ) if (
-              result == 1
-            ) else (
-              await cb.message.edit("❌ Tidak ada lagu yang dimainkan!", show_alert=True)
-            )
-        
-    elif type_ == "cunmute":
-              result = callsmusic.unmute(chet_id)
-            (
-              await cb.message.edit("✅ Musik di Unmute")
-            ) if (
-              result == 0
-            ) else (
-              await cb.message.edit("❌ Musik tidak dimute!", show_alert=True)
-            ) if (
-              result == 1
-            ) else (
-              await message.edit("❌ Tidak ada lagu yang dimainkan!", show_alert=True)
-            )
 
 
 @Client.on_message(
