@@ -329,25 +329,25 @@ async def m_cb(b, cb):
 
     the_data = cb.message.reply_markup.inline_keyboard[1][0].callback_data
     if type_ == "pause":
-        (
-            await cb.answer("Musik dijeda!")
-        ) if (
-            callsmusic.pause(chet_id)
-        ) else (
+        if (chet_id not in callsmusic.active_chats) or (
+            callsmusic.active_chats[chet_id] == "paused"
+        ):
             await cb.answer("Assistant sedang tidak terhubung dengan obrolan suara/vcg", show_alert=True)
-        )
+        else:
+            callsmusic.pause(chet_id)
+            await cb.answer("Lagu dijeda!")
             await cb.message.edit(
                 updated_stats(m_chat, qeue), reply_markup=r_ply("play")
             )
 
-    elif type_ == "resume":
-        (
-            await cb.answer("Musik tidak lagi dijeda!")
-        ) if (
-            callsmusic.resume(chet_id)
-        ) else (
+    elif type_ == "play":
+        if (chet_id not in callsmusic.active_chats) or (
+            callsmusic.active_chats[chet_id] == "playing"
+        ):
             await cb.answer("Assistant sedang tidak terhubung dengan obrolan suara/vcg", show_alert=True)
-        )
+        else:
+            callsmusic.resume(chet_id)
+            await cb.answer("Lagu tidak lagi dijeda!")
             await cb.message.edit(
                 updated_stats(m_chat, qeue), reply_markup=r_ply("pause")
             )
