@@ -376,22 +376,24 @@ async def m_cb(b, cb):
         await cb.message.edit(msg)
 
     elif type_ == "resume":
-        (
-            await cb.answer("Musik tidak lagi dijeda!")
-        ) if (
+        if (chet_id not in callsmusic.active_chats) or (
+            callsmusic.active_chats[chet_id] == "playing"
+        ):
+            await cb.answer("Obrolan tidak terhubung atau sudah dimainkan", show_alert=True)
+        else:
             callsmusic.resume(chet_id)
-        ) else (
-            await cb.answer("Obrolan tidak terhubung atau sudah dijeda", show_alert=True)
-        )
-            
+            await cb.answer("Lagu tidak lagi dijeda!")
     elif type_ == "puse":
-        (
-            await cb.answer("Musik dijeda!")
-        ) if (
+        if (chet_id not in callsmusic.active_chats) or (
+            callsmusic.active_chats[chet_id] == "paused"
+        ):
+            await cb.answer("Obrolan tidak terhubung atau sudah dijeda", show_alert=True)
+        else:
             callsmusic.pause(chet_id)
-        ) else (
-            await cb.answer("Chat is not connected or already paused", show_alert=True)
-        )
+            await cb.answer("Lagu dijeda!")
+    elif type_ == "cls":
+        await cb.answer("Closed menu")
+        await cb.message.delete()
             
     elif type_ == "cls":
         await cb.answer("Menu ditutup")
@@ -450,34 +452,6 @@ async def m_cb(b, cb):
             await cb.message.edit("Berhasil keluar dari Group!")
         else:
             await cb.answer("Assistant sedang tidak terhubung dengan obrolan suara/vcg!", show_alert=True)
-            
-     elif type_ == "mute":
-              result = callsmusic.mute(chet_id)
-            (
-              await cb.message.edit("✅ Musik di mute")
-            ) if (
-              result == 0
-            ) else (
-              await cb.message.edit("❌ Musik sudah di mute!", show_alert=True)
-            ) if (
-              result == 1
-            ) else:
-              await cb.message.edit("❌ Tidak ada lagu yang dimainkan!", show_alert=True)
-            )
-        
-    elif type_ == "unmute":
-              result = callsmusic.unmute(chet_id)
-            (
-              await cb.message.edit("✅ Musik di Unmuted")
-            ) if (
-              result == 0
-            ) else (
-              await cb.message.edit("❌ Musik tidak dimute!", show_alert=True)
-            ) if (
-              result == 1
-            ) else (
-              await message.edit("❌ Tidak ada lagu yang dimainkan!", show_alert=True)
-            )
 
 
 @Client.on_message(command("play") & other_filters)
