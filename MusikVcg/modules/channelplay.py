@@ -105,8 +105,6 @@ def r_ply(type_):
                 InlineKeyboardButton("⏸", "cpuse"),
                 InlineKeyboardButton("▶️", "cresume"),
                 InlineKeyboardButton("⏭", "cskip"),
-                InlineKeyboardButton("🔇", "cmute"),
-                InlineKeyboardButton("🔊", "cunmute"),
             ],
             [
                 InlineKeyboardButton("Daftar Playlist", "cplaylist"),
@@ -225,26 +223,24 @@ async def m_cb(b, cb):
 
     the_data = cb.message.reply_markup.inline_keyboard[1][0].callback_data
     if type_ == "cpause":
-        if (chet_id not in callsmusic.active_chats) or (
-            callsmusic.active_chats[chet_id] == "paused"
-        ):
-            await cb.answer("Assistant sedang tidak terhubung dengan obrolan suara/vcg", show_alert=True)
-        else:
-            callsmusic.pause(chet_id)
+        (
             await cb.answer("Lagu dijeda!")
-            await cb.message.edit(updated_stats(conv, qeue), reply_markup=r_ply("play"))
+        ) if (
+            callsmusic.pause(chet_id)
+        ) else (
+            await cb.answer("Assistant sedang tidak terhubung dengan obrolan suara/vcg", show_alert=True)
+        )
+        await cb.message.edit(updated_stats(conv, qeue), reply_markup=r_ply("play"))
 
     elif type_ == "cplay":
-        if (chet_id not in callsmusic.active_chats) or (
-            callsmusic.active_chats[chet_id] == "playing"
-        ):
-            await cb.answer("Assistant sedang tidak terhubung dengan obrolan suara/vcg", show_alert=True)
-        else:
-            callsmusic.resume(chet_id)
+        (
             await cb.answer("Lagu tidak lagi dijeda!")
-            await cb.message.edit(
-                updated_stats(conv, qeue), reply_markup=r_ply("pause")
-            )
+        ) if (
+            callsmusic.resume(chet_id)
+        ) else (
+            await cb.answer("Assistant sedang tidak terhubung dengan obrolan suara/vcg", show_alert=True)
+        )
+        await cb.message.edit(updated_stats(conv, qeue), reply_markup=r_ply("pause"))
 
     elif type_ == "cplaylist":
         queue = que.get(cb.message.chat.id)
@@ -309,6 +305,7 @@ async def m_cb(b, cb):
             ]
         )
         await cb.message.edit(stats, reply_markup=marr)
+        
     elif type_ == "cskip":
         if qeue:
             qeue.pop(0)

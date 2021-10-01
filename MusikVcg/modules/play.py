@@ -69,7 +69,11 @@ def cb_admin_check(func: Callable) -> Callable:
 
 def transcode(filename):
     ffmpeg.input(filename).output(
-        "input.raw", format="s16le", acodec="pcm_s16le", ac=2, ar="48k"
+        "input.raw", 
+        format="s16le", 
+        acodec="pcm_s16le", 
+        ac=2, 
+        ar="48k"
     ).overwrite_output().run()
     os.remove(filename)
 
@@ -189,8 +193,6 @@ def r_ply(type_):
                 InlineKeyboardButton("⏸", "puse"),
                 InlineKeyboardButton("▶️", "resume"),
                 InlineKeyboardButton("⏭", "skip"),
-                InlineKeyboardButton("🔇", "mute"),
-                InlineKeyboardButton("🔊", "unmute"),
             ],
             [
                 InlineKeyboardButton("ᴘ ʟ ᴀ ʏ ʟ ɪ ꜱ ᴛ", "playlist"),
@@ -329,28 +331,24 @@ async def m_cb(b, cb):
 
     the_data = cb.message.reply_markup.inline_keyboard[1][0].callback_data
     if type_ == "pause":
-        if (chet_id not in callsmusic.active_chats) or (
-            callsmusic.active_chats[chet_id] == "paused"
-        ):
-            await cb.answer("Assistant sedang tidak terhubung dengan obrolan suara/vcg", show_alert=True)
-        else:
+        (
+            await cb.answer("Musik dijeda!")
+        ) if (
             callsmusic.pause(chet_id)
-            await cb.answer("Lagu dijeda!")
-            await cb.message.edit(
-                updated_stats(m_chat, qeue), reply_markup=r_ply("play")
-            )
-
-    elif type_ == "play":
-        if (chet_id not in callsmusic.active_chats) or (
-            callsmusic.active_chats[chet_id] == "playing"
-        ):
+        ) else (
             await cb.answer("Assistant sedang tidak terhubung dengan obrolan suara/vcg", show_alert=True)
-        else:
+        )
+        await cb.message.edit(updated_stats(m_chat, qeue), reply_markup=r_ply("play"))
+
+    elif type_ == "resume":
+        (
+            await cb.answer("Musik tidak lagi dijeda!")
+        ) if (
             callsmusic.resume(chet_id)
-            await cb.answer("Lagu tidak lagi dijeda!")
-            await cb.message.edit(
-                updated_stats(m_chat, qeue), reply_markup=r_ply("pause")
-            )
+        ) else (
+            await cb.answer("Assistant sedang tidak terhubung dengan obrolan suara/vcg", show_alert=True)
+        )
+        await cb.message.edit(updated_stats(m_chat, qeue), reply_markup=r_ply("pause"))
 
     elif type_ == "playlist":
         queue = que.get(cb.message.chat.id)
@@ -376,27 +374,25 @@ async def m_cb(b, cb):
         await cb.message.edit(msg)
 
     elif type_ == "resume":
-        if (chet_id not in callsmusic.active_chats) or (
-            callsmusic.active_chats[chet_id] == "playing"
-        ):
-            await cb.answer("Obrolan tidak terhubung atau sudah dimainkan", show_alert=True)
-        else:
+        (
+            await cb.answer("Musik tidak lagi dijeda!")
+        ) if (
             callsmusic.resume(chet_id)
-            await cb.answer("Lagu tidak lagi dijeda!")
+        ) else (
+            await cb.answer("Obrolan tidak terhubung atau sudah dimainkan", show_alert=True)
+        )
+            
     elif type_ == "puse":
-        if (chet_id not in callsmusic.active_chats) or (
-            callsmusic.active_chats[chet_id] == "paused"
-        ):
-            await cb.answer("Obrolan tidak terhubung atau sudah dijeda", show_alert=True)
-        else:
+        (
+            await cb.answer("Musik dijeda!")
+        ) if (
             callsmusic.pause(chet_id)
-            await cb.answer("Lagu dijeda!")
-    elif type_ == "cls":
-        await cb.answer("Closed menu")
-        await cb.message.delete()
+        ) else (
+            await cb.answer("Obrolan tidak terhubung atau sudah dijeda", show_alert=True)
+        )
             
     elif type_ == "cls":
-        await cb.answer("Menu ditutup")
+        await cb.answer("Menu ditutup!")
         await cb.message.delete()
 
     elif type_ == "menu":
@@ -409,8 +405,6 @@ async def m_cb(b, cb):
                     InlineKeyboardButton("⏸", "puse"),
                     InlineKeyboardButton("▶️", "resume"),
                     InlineKeyboardButton("⏭", "skip"),
-                    InlineKeyboardButton("🔇", "mute"),
-                    InlineKeyboardButton("🔊", "unmute"),
                 ],
                 [
                     InlineKeyboardButton("ᴘ ʟ ᴀ ʏ ʟ ɪ ꜱ ᴛ", "playlist"),
@@ -921,7 +915,7 @@ async def ytplay(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="🔊 **Sedang memutar lagu request-an dari** {} ".format(
+            caption="🔊 **Memutar lagu request-an dari** {} ".format(
                 message.from_user.mention()
             ),
         )
@@ -1092,7 +1086,7 @@ async def lol_cb(b, cb):
             "Anda bukan orang yang meminta untuk memutar lagu !", show_alert=True
         )
         return
-    await cb.message.edit("gamon y? xixi tunggu sebentar prenn 👅")
+    await cb.message.edit("tunggu sebentar prenn")
     x = int(x)
     try:
         useer_name = cb.message.reply_to_message.from_user.first_name
@@ -1156,7 +1150,7 @@ async def lol_cb(b, cb):
         await b.send_photo(
             chat_id,
             photo="final.png",
-            caption=f"🎵 <b>Lagu yang Anda {r_by.mention} minta dalam antrian diposisi {position}! </b>",
+            caption=f"🎵 <b>Lagu yang Anda {r_by.mention()} minta dalam antrian diposisi {position}! </b>",
             reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -1179,6 +1173,6 @@ async def lol_cb(b, cb):
             chat_id,
             photo="final.png",
             reply_markup=keyboard,
-            caption=f"🎵 <b>Memutar lagu request-an dari {r_by.mention} </b>",
+            caption=f"🎵 <b>Memutar lagu request-an dari {r_by.mention()} </b>",
         )
         os.remove("final.png")
