@@ -7,7 +7,7 @@
 
 #### BOT INI SUDAH DIMODIFIKASI KE BAHASA INDONESIA
 ### Bot musik yang di buat untuk memainkan musik di grup & channel telegram
-### Contoh bot yg sudah jadi [@AnonMusic_Bot](https://t.me/anonmusic_bot)
+### Contoh bot yg sudah jadi [@MusikVcgBot](https://t.me/MusikVcgBot)
 
 <h2> Features ⚡ </h2>
 
