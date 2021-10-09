@@ -18,7 +18,7 @@
 
 from os import path
 
-from youtube_dl import YoutubeDL
+from yt_dlp import YoutubeDL
 
 from MusikVcg.config import DURATION_LIMIT
 from MusikVcg.helpers.errors import DurationLimitError
