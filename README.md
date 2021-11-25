@@ -31,7 +31,7 @@
 
 <p align="left"><a href="https://heroku.com/deploy?template=https://github.com/CollinFowel/MusikVcgV2/tree/master"> <img src="https://img.shields.io/badge/Deploy%20Ke%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
 
-• Klik tombol dibawah untuk mengambil `Pyrogram String Session` dan nanti pilih nomor P ya :
+• Klik tombol dibawah untuk mengambil `Pyrogram String Session` dan nanti pilih yang P ya :
 
 <p align="left"><a href="https://replit.com/@ChankitSaini/GenerateStringSession"> <img src="https://img.shields.io/badge/Ambil%20String%20Disini-black?style=for-the-badge&logo=replit" width="238" height="38.45"/></a></p>
 
