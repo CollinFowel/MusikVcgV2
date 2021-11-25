@@ -25,15 +25,15 @@
 
 ## 🚀 Deployment
 
-### 🖤 Heroku/Railway ⛓️🔫
+### 🖤 Heroku⛓️🔫
 
 • Silahkan pilih mau deploy via apa, kalo ga ngerti bisa tanya [@xxstanme](https://t.me/xxstanme) di telegram
 
 <p align="left"><a href="https://heroku.com/deploy?template=https://github.com/CollinFowel/MusikVcgV2/tree/master"> <img src="https://img.shields.io/badge/Deploy%20Ke%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
 
-• Klik tombol dibawah untuk mengambil `Pyrogram String Session` dan nanti pilih nomor 2 ya :
+• Klik tombol dibawah untuk mengambil `Pyrogram String Session` dan nanti pilih nomor P ya :
 
-<p align="left"><a href="https://replit.com/@CollinFowel/Ambil-String-Session#main.py"> <img src="https://img.shields.io/badge/Ambil%20String%20Disini-black?style=for-the-badge&logo=replit" width="238" height="38.45"/></a></p>
+<p align="left"><a href="https://replit.com/@ChankitSaini/GenerateStringSession"> <img src="https://img.shields.io/badge/Ambil%20String%20Disini-black?style=for-the-badge&logo=replit" width="238" height="38.45"/></a></p>
 
 
 ### ⚔ Self-hosting (For Devs) 
